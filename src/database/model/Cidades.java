@@ -6,6 +6,7 @@ import generic.ModeloGenerico;
 
 public class Cidades extends ModeloGenerico implements Serializable{
 
+	private static final long serialVersionUID = 7435172889783396987L;
 	private String cidade;
 	private int cdCidade;
 	private String estado;

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Alunos implements Serializable{
 	
+	private static final long serialVersionUID = -5870304688930514247L;
 	private String codigo_aluno;
 	private String aluno;
 	private String data_nascimento;
