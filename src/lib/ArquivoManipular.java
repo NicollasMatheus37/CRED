@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ArquivoManipular { 
 
-	
 	public static final boolean escreverArquivoSerializado(List<?> listaObjeto, String nomeArquivo) {
 		
 	    try {
