@@ -1,3 +1,5 @@
+package resources.views;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,6 +80,8 @@ public class FUsuario extends JInternalFrame {
 		// Define o método de fechamento da janela.
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBackground(Color.black);
+		setClosable(true);
+		setIconifiable(true);
 		// Cria os componentes.
 		ComponentesCriar();
 
@@ -87,7 +91,7 @@ public class FUsuario extends JInternalFrame {
 
 		// codigo
 		lblCode = new JLabel("Código:");
-		lblCode.setBounds(20, 20, 150, 25);
+		lblCode.setBounds(45, 20, 150, 25);
 		getContentPane().add(lblCode);
 
 		txfCode = new JTextField();
@@ -98,7 +102,7 @@ public class FUsuario extends JInternalFrame {
 
 		// nome
 		lblNomeAluno = new JLabel("Nome:");
-		lblNomeAluno.setBounds(20, 55, 150, 25);
+		lblNomeAluno.setBounds(50, 55, 150, 25);
 		getContentPane().add(lblNomeAluno);
 
 		txfNomeAluno = new JTextField();
@@ -107,7 +111,7 @@ public class FUsuario extends JInternalFrame {
 
 		// data nascimento
 		lblDataNasc = new JLabel("Nascimento:");
-		lblDataNasc.setBounds(20, 90, 200, 25);
+		lblDataNasc.setBounds(15, 90, 200, 25);
 		getContentPane().add(lblDataNasc);
 
 		txfDataNasc = new JTextField();
@@ -138,7 +142,7 @@ public class FUsuario extends JInternalFrame {
 		
 		//endereço
 		lblEndereco = new JLabel("Endereço:");
-		lblEndereco.setBounds(20,125,200,25);
+		lblEndereco.setBounds(30,125,200,25);
 		getContentPane().add(lblEndereco);
 		
 		txfEndereco = new JTextField();
@@ -147,7 +151,7 @@ public class FUsuario extends JInternalFrame {
 //		
 		//numero casa
 		lblNumeroCasa = new JLabel("Numero:");
-		lblNumeroCasa.setBounds(20,160,100,25);
+		lblNumeroCasa.setBounds(40,160,100,25);
 		getContentPane().add(lblNumeroCasa);
 		
 		txfNumeroCasa = new JTextField();
@@ -188,7 +192,7 @@ public class FUsuario extends JInternalFrame {
 
 		//UF
 		lblUF = new JLabel("UF:");
-		lblUF.setBounds(20,230,50,25);
+		lblUF.setBounds(70,230,50,25);
 		getContentPane().add(lblUF);
 		
 		JComboBox comboUF = new JComboBox(uf);
@@ -202,7 +206,7 @@ public class FUsuario extends JInternalFrame {
 
 		//País
 		lblPais = new JLabel("País:");
-		lblPais.setBounds(20,265,100,25);
+		lblPais.setBounds(60,265,100,25);
 		getContentPane().add(lblPais);
 				
 		JComboBox comboPais = new JComboBox(pais);
@@ -217,7 +221,7 @@ public class FUsuario extends JInternalFrame {
 		
 		//CEP
 		lblCEP = new JLabel("CEP:");
-		lblCEP.setBounds(20,195,200,25);
+		lblCEP.setBounds(60,195,200,25);
 		getContentPane().add(lblCEP);
 				
 		txfCEP = new JTextField();
@@ -226,7 +230,7 @@ public class FUsuario extends JInternalFrame {
 		
 		//Telefone
 		lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds(20,300,200,25);
+		lblTelefone.setBounds(35,300,200,25);
 		getContentPane().add(lblTelefone);
 						
 		txfTelefone = new JTextField();
@@ -244,7 +248,7 @@ public class FUsuario extends JInternalFrame {
 		
 		//Email
 		lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(20,335,200,25);
+		lblEmail.setBounds(55,335,200,25);
 		getContentPane().add(lblEmail);
 								
 		txfEmail = new JTextField();
@@ -253,7 +257,7 @@ public class FUsuario extends JInternalFrame {
 
 		//Observacao
 		lblObservacao = new JLabel("Observacao:");
-		lblObservacao.setBounds(20,370,150,25);
+		lblObservacao.setBounds(15,370,150,25);
 		getContentPane().add(lblObservacao);
 								
 		txfObservacao = new JTextArea();

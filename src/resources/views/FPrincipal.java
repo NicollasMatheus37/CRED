@@ -1,3 +1,5 @@
+package resources.views;
+
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -46,11 +48,14 @@ public class FPrincipal extends JFrame {
 	private void criarComponentes() {
 		
 		desktopPane = new JDesktopPane();
+//		desktopPane.setSize(800,600);
 		desktopPane.addHierarchyBoundsListener(new HierarchyBoundsListener() {
 			
 			@Override
 			public void ancestorResized(HierarchyEvent arg0) {
-				desktopPane.setSize(getSize());				
+				Dimension d = getSize();
+				d.setSize(d.getWidth() - 20, d.getHeight() - 60);
+				desktopPane.setSize(d);				
 			}
 			
 			@Override
