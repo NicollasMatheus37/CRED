@@ -1,31 +1,34 @@
 package database.model;
 
+import java.util.Date;
 import java.io.Serializable;
 
-public class Alunos implements Serializable{
+import generic.ModeloGenerico;
+
+public class Alunos extends ModeloGenerico implements Serializable {
 	
 	private static final long serialVersionUID = -5870304688930514247L;
-	private String codigo_aluno;
+	private int codigoAluno;
 	private String aluno;
-	private String data_nascimento;
+	private Date dataNascimento;
 	private String sexo;
-	private String telefone;
-	private String celular;
+	private double telefone;
+	private double celular;
 	private String email;
 	private String observacao;
 	private String endereco;
-	private String numero;
+	private double numero;
 	private String complemento;
 	private String bairro;
 	private String cidade;
 	private String estado;
-	private String pais;
-	private String cep;
-	public String getCodigo_aluno() {
-		return codigo_aluno;
+	private double pais;
+	private double cep;
+	public int getCodigo_aluno() {
+		return codigoAluno;
 	}
-	public void setCodigo_aluno(String codigo_aluno) {
-		this.codigo_aluno = codigo_aluno;
+	public void setCodigo_aluno(int codigo_aluno) {
+		this.codigoAluno = codigo_aluno;
 	}
 	public String getAluno() {
 		return aluno;
@@ -33,11 +36,11 @@ public class Alunos implements Serializable{
 	public void setAluno(String aluno) {
 		this.aluno = aluno;
 	}
-	public String getData_nascimento() {
-		return data_nascimento;
+	public Date getData_nascimento() {
+		return dataNascimento;
 	}
-	public void setData_nascimento(String data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setData_nascimento(Date data_nascimento) {
+		this.dataNascimento = data_nascimento;
 	}
 	public String getSexo() {
 		return sexo;
@@ -45,16 +48,16 @@ public class Alunos implements Serializable{
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getTelefone() {
+	public double getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(String telefone) {
+	public void setTelefone(double telefone) {
 		this.telefone = telefone;
 	}
-	public String getCelular() {
+	public double getCelular() {
 		return celular;
 	}
-	public void setCelular(String celular) {
+	public void setCelular(double celular) {
 		this.celular = celular;
 	}
 	public String getEmail() {
@@ -75,10 +78,10 @@ public class Alunos implements Serializable{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public String getNumero() {
+	public double getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
+	public void setNumero(double numero) {
 		this.numero = numero;
 	}
 	public String getComplemento() {
@@ -105,17 +108,20 @@ public class Alunos implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getPais() {
+	public double getPais() {
 		return pais;
 	}
-	public void setPais(String pais) {
+	public void setPais(double pais) {
 		this.pais = pais;
 	}
-	public String getCep() {
+	public double getCep() {
 		return cep;
 	}
-	public void setCep(String cep) {
+	public void setCep(double cep) {
 		this.cep = cep;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	@Override
 	public int hashCode() {
@@ -123,20 +129,26 @@ public class Alunos implements Serializable{
 		int result = 1;
 		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
 		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
-		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
-		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(celular);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(cep);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + ((codigo_aluno == null) ? 0 : codigo_aluno.hashCode());
+		result = prime * result + codigoAluno;
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
-		result = prime * result + ((data_nascimento == null) ? 0 : data_nascimento.hashCode());
+		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		temp = Double.doubleToLongBits(numero);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((observacao == null) ? 0 : observacao.hashCode());
-		result = prime * result + ((pais == null) ? 0 : pais.hashCode());
+		temp = Double.doubleToLongBits(pais);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		temp = Double.doubleToLongBits(telefone);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 	@Override
@@ -158,35 +170,26 @@ public class Alunos implements Serializable{
 				return false;
 		} else if (!bairro.equals(other.bairro))
 			return false;
-		if (celular == null) {
-			if (other.celular != null)
-				return false;
-		} else if (!celular.equals(other.celular))
+		if (Double.doubleToLongBits(celular) != Double.doubleToLongBits(other.celular))
 			return false;
-		if (cep == null) {
-			if (other.cep != null)
-				return false;
-		} else if (!cep.equals(other.cep))
+		if (Double.doubleToLongBits(cep) != Double.doubleToLongBits(other.cep))
 			return false;
 		if (cidade == null) {
 			if (other.cidade != null)
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
-		if (codigo_aluno == null) {
-			if (other.codigo_aluno != null)
-				return false;
-		} else if (!codigo_aluno.equals(other.codigo_aluno))
+		if (codigoAluno != other.codigoAluno)
 			return false;
 		if (complemento == null) {
 			if (other.complemento != null)
 				return false;
 		} else if (!complemento.equals(other.complemento))
 			return false;
-		if (data_nascimento == null) {
-			if (other.data_nascimento != null)
+		if (dataNascimento == null) {
+			if (other.dataNascimento != null)
 				return false;
-		} else if (!data_nascimento.equals(other.data_nascimento))
+		} else if (!dataNascimento.equals(other.dataNascimento))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -203,34 +206,25 @@ public class Alunos implements Serializable{
 				return false;
 		} else if (!estado.equals(other.estado))
 			return false;
-		if (numero == null) {
-			if (other.numero != null)
-				return false;
-		} else if (!numero.equals(other.numero))
+		if (Double.doubleToLongBits(numero) != Double.doubleToLongBits(other.numero))
 			return false;
 		if (observacao == null) {
 			if (other.observacao != null)
 				return false;
 		} else if (!observacao.equals(other.observacao))
 			return false;
-		if (pais == null) {
-			if (other.pais != null)
-				return false;
-		} else if (!pais.equals(other.pais))
+		if (Double.doubleToLongBits(pais) != Double.doubleToLongBits(other.pais))
 			return false;
 		if (sexo == null) {
 			if (other.sexo != null)
 				return false;
 		} else if (!sexo.equals(other.sexo))
 			return false;
-		if (telefone == null) {
-			if (other.telefone != null)
-				return false;
-		} else if (!telefone.equals(other.telefone))
+		if (Double.doubleToLongBits(telefone) != Double.doubleToLongBits(other.telefone))
 			return false;
 		return true;
 	}
-	
-	
+
+
 	
 }
