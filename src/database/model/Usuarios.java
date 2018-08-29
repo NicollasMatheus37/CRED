@@ -3,9 +3,10 @@ package database.model;
 import java.io.Serializable;
 import java.util.List;
 
+import generic.ModeloGenerico;
 import database.dao.UsuariosDAO;
 
-public class Usuarios implements Serializable {
+public class Usuarios extends ModeloGenerico implements Serializable {
 
 	private static final long serialVersionUID = 3699199325196816535L;
 	private int cdUsuario;
