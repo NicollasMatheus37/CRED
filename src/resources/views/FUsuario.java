@@ -59,9 +59,9 @@ public class FUsuario extends JInternalFrame {
 //	private JPanel telacheia;
 	private JPanel painel1;
 //	private JLabel lblPainel1;
-	String[] uf = {"SC","RS"};
-	String[] cidades = {"meu ovo", "minha colinha na prova de ontem tava uma beleza"};
-	String[] pais = {"Republica Dominicana do Congo", "Teu cú"};
+	private String[] uf = {"SC","RS"};
+	private String[] cidades = {"meu ovo", "minha colinha na prova de ontem tava uma beleza"};
+	private String[] pais = {"Republica Dominicana do Congo", "Teu cú"};
 	
 	public FUsuario() {
 

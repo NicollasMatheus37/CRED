@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyBoundsListener;
 import java.awt.event.HierarchyEvent;
+import java.beans.PropertyVetoException;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -19,7 +20,9 @@ public class FPrincipal extends JFrame {
 	JDesktopPane desktopPane;
 	JMenuBar menuBar;
 	JMenu menuCadastro;
+	JMenu menuBusca;
 	JMenuItem itemCadastroUsuario;
+	JMenuItem itemBuscaAlunos;
 
 	public FPrincipal() {
 		// Define o tamanho da janela.
@@ -67,6 +70,7 @@ public class FPrincipal extends JFrame {
 		menuBar = new JMenuBar();
 		
 		menuCadastro = new JMenu("Cadastro");
+		menuBusca = new JMenu("Busca");
 		
 		itemCadastroUsuario = new JMenuItem("Usuário");
 		itemCadastroUsuario.addActionListener(new ActionListener() {
@@ -77,14 +81,29 @@ public class FPrincipal extends JFrame {
 				al.setLocation(1, 1);
 				desktopPane.add(al);
 				al.setVisible(true);
-				System.out.println("daads");
 				
 			}
 		});
 		
+		itemBuscaAlunos = new JMenuItem("Alunos");
+		itemBuscaAlunos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FBuscaAlunos ba = new FBuscaAlunos();
+				ba.setLocation(1, 1);
+//				ba.setMaximizable(true);
+				desktopPane.add(ba);
+				ba.setVisible(true);
+				
+			}
+		});
 		menuCadastro.add(itemCadastroUsuario);
+		menuBusca.add(itemBuscaAlunos);
 		
+		menuBar.add(menuBusca);
 		menuBar.add(menuCadastro);
+		
 		
 		setJMenuBar(menuBar);
 		add(desktopPane);
