@@ -1,8 +1,4 @@
 package resources.views;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
