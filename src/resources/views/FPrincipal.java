@@ -77,7 +77,7 @@ public class FPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FUsuario al = new FUsuario();
+				FAluno al = new FAluno();
 				al.setLocation(1, 1);
 				desktopPane.add(al);
 				al.setVisible(true);
