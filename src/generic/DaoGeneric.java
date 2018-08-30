@@ -31,5 +31,6 @@ public abstract class DaoGeneric <ModeloGenerico> {
 		return new StringBuilder().append(Util.getDiretorioDados()).append(getNomeArquivo()).toString();
 	}
 	
+	public abstract Integer getMax();	
 	
 }

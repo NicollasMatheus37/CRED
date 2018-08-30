@@ -1,8 +1,10 @@
 package database.dao;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+import database.model.Alunos;
 import database.model.Usuarios;
 import generic.DaoGeneric;
 import lib.ArquivoManipular;
@@ -93,6 +95,11 @@ public class UsuariosDAO extends DaoGeneric<Usuarios> {
 	@Override
 	protected boolean salvar() {
 		return ArquivoManipular.escreverArquivoSerializado(getLista(), getArquivo());
+	}
+
+	@Override
+	public Integer getMax() {
+		return lista.isEmpty() ? 0 : lista.stream().max(Comparator.comparing(Usuarios::getCdUsuario)).get().getCdUsuario() + 1;
 	}
 
 

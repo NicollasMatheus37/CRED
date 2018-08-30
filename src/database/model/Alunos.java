@@ -3,12 +3,12 @@ package database.model;
 import java.util.Date;
 import java.io.Serializable;
 
-import generic.ModeloGenerico;
+import database.dao.AlunosDAO;
 
-public class Alunos extends ModeloGenerico implements Serializable {
+public class Alunos implements Serializable{
 	
 	private static final long serialVersionUID = -5870304688930514247L;
-	private int codigoAluno;
+	private Integer cdAluno;
 	private String aluno;
 	private Date dataNascimento;
 	private String sexo;
@@ -22,13 +22,18 @@ public class Alunos extends ModeloGenerico implements Serializable {
 	private String bairro;
 	private String cidade;
 	private String estado;
-	private double pais;
-	private double cep;
-	public int getCodigo_aluno() {
-		return codigoAluno;
+	private String pais;
+	private String cep;
+	
+	public Alunos () {
+		setCdAluno(new AlunosDAO().getMax());
 	}
-	public void setCodigo_aluno(int codigo_aluno) {
-		this.codigoAluno = codigo_aluno;
+
+	public Integer getCdAluno() {
+		return cdAluno;
+	}
+	public void setCdAluno(Integer cdAluno) {
+		this.cdAluno = cdAluno;
 	}
 	public String getAluno() {
 		return aluno;
@@ -135,7 +140,7 @@ public class Alunos extends ModeloGenerico implements Serializable {
 		temp = Double.doubleToLongBits(cep);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + codigoAluno;
+		result = prime * result + ((cdAluno == null) ? 0 : cdAluno.hashCode());
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
 		result = prime * result + ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -179,7 +184,10 @@ public class Alunos extends ModeloGenerico implements Serializable {
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
-		if (codigoAluno != other.codigoAluno)
+		if (cdAluno == null) {
+			if (other.cdAluno != null)
+				return false;
+		} else if (!cdAluno.equals(other.cdAluno))
 			return false;
 		if (complemento == null) {
 			if (other.complemento != null)
