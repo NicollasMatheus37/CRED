@@ -77,7 +77,6 @@ public class FPrincipal extends JFrame {
 				al.setLocation(1, 1);
 				desktopPane.add(al);
 				al.setVisible(true);
-				System.out.println("daads");
 				
 			}
 		});
@@ -89,12 +88,6 @@ public class FPrincipal extends JFrame {
 		setJMenuBar(menuBar);
 		add(desktopPane);
 		
-	}
-
-	public static void main(String[] args) {
-		FPrincipal fp = new FPrincipal();
-		fp.setVisible(true);
-
 	}
 
 }

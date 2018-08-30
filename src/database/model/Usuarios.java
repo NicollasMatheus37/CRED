@@ -8,19 +8,23 @@ import database.dao.UsuariosDAO;
 public class Usuarios implements Serializable {
 
 	private static final long serialVersionUID = 3699199325196816535L;
-	private int cdUsuario;
+	private Integer cdUsuario;
 	private String usuario;
 	private String senha;
 	private String perfil;
 
 	private final transient String USUARIO_ADMIN = "admin";
 	private final transient String SENHA_ADMIN = "admin";
-
-	public void setCdUsuario(int cdUsuario) {
+	
+	public Usuarios() {
+		setCdUsuario(new UsuariosDAO().getMax());
+	}
+	
+	public void setCdUsuario(Integer cdUsuario) {
 		this.cdUsuario = cdUsuario;
 	}
 
-	public int getCdUsuario() {
+	public Integer getCdUsuario() {
 		return cdUsuario;
 	}
 

@@ -1,3 +1,5 @@
+package resources.views;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,10 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import database.model.Usuarios;
 
 public class FLogin extends JDialog {
 	
@@ -23,12 +28,9 @@ public class FLogin extends JDialog {
 
 	public FLogin() {
 		
-		
 		// Define o tamanho da janela.
 		setSize(400,200);
 		
-				
-				
 		// Define o titulo da janela.
 		setTitle("Login");
 		
@@ -72,8 +74,8 @@ public class FLogin extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				btnEntrar.requestFocus();
 				validarLogin();
+				btnEntrar.requestFocus();
 				
 			}
 		});
@@ -109,9 +111,26 @@ public class FLogin extends JDialog {
 	
 	private boolean validarLogin(){
 		
-		System.out.println("sdfgsd");
-		return true;
+		Usuarios usuario = new Usuarios();
 		
+		usuario.setUsuario(txfUsuario.getText());
+		usuario.setSenha(pwfSenha.getText());
+		
+		if (usuario.validarLogin(usuario)) {
+			abrirTelaPrincipal();
+		} else {
+			JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos");
+			pwfSenha.setText("");
+			pwfSenha.requestFocus();
+		}
+		
+		return true;
+				
+	}
+	
+	private void abrirTelaPrincipal() {
+		new FPrincipal().setVisible(true);
+		hide();
 	}
 	
 	public static void main(String[] args) {

@@ -2,10 +2,12 @@ package database.model;
 
 import java.io.Serializable;
 
+import database.dao.AlunosDAO;
+
 public class Alunos implements Serializable{
 	
 	private static final long serialVersionUID = -5870304688930514247L;
-	private String codigo_aluno;
+	private Integer cdAluno;
 	private String aluno;
 	private String data_nascimento;
 	private String sexo;
@@ -21,11 +23,16 @@ public class Alunos implements Serializable{
 	private String estado;
 	private String pais;
 	private String cep;
-	public String getCodigo_aluno() {
-		return codigo_aluno;
+	
+	public Alunos () {
+		setCdAluno(new AlunosDAO().getMax());
 	}
-	public void setCodigo_aluno(String codigo_aluno) {
-		this.codigo_aluno = codigo_aluno;
+
+	public Integer getCdAluno() {
+		return cdAluno;
+	}
+	public void setCdAluno(Integer cdAluno) {
+		this.cdAluno = cdAluno;
 	}
 	public String getAluno() {
 		return aluno;
@@ -126,7 +133,7 @@ public class Alunos implements Serializable{
 		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
 		result = prime * result + ((cidade == null) ? 0 : cidade.hashCode());
-		result = prime * result + ((codigo_aluno == null) ? 0 : codigo_aluno.hashCode());
+		result = prime * result + ((cdAluno == null) ? 0 : cdAluno.hashCode());
 		result = prime * result + ((complemento == null) ? 0 : complemento.hashCode());
 		result = prime * result + ((data_nascimento == null) ? 0 : data_nascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
@@ -173,10 +180,10 @@ public class Alunos implements Serializable{
 				return false;
 		} else if (!cidade.equals(other.cidade))
 			return false;
-		if (codigo_aluno == null) {
-			if (other.codigo_aluno != null)
+		if (cdAluno == null) {
+			if (other.cdAluno != null)
 				return false;
-		} else if (!codigo_aluno.equals(other.codigo_aluno))
+		} else if (!cdAluno.equals(other.cdAluno))
 			return false;
 		if (complemento == null) {
 			if (other.complemento != null)

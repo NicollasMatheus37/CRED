@@ -20,6 +20,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import database.dao.AlunosDAO;
+import database.model.Alunos;
+
 public class FUsuario extends JInternalFrame {
 
 	// componentes
@@ -36,7 +39,6 @@ public class FUsuario extends JInternalFrame {
 	private JLabel lblNumeroCasa;
 	private JTextField txfComplemento;
 	private JLabel lblComplemento;
-//	private JTextField txfCidade;
 	private JLabel lblCidade;
 	private JTextField txfBairro;
 	private JLabel lblBairro;
@@ -56,12 +58,16 @@ public class FUsuario extends JInternalFrame {
 	private JLabel lblObservacao;
 	
 	private JButton btnCadastrar;
-//	private JPanel telacheia;
 	private JPanel painel1;
-//	private JLabel lblPainel1;
 	String[] uf = {"SC","RS"};
 	String[] cidades = {"meu ovo", "minha colinha na prova de ontem tava uma beleza"};
 	String[] pais = {"Republica Dominicana do Congo", "Teu cú"};
+	
+	private final int widthPadraoLabel = 75;
+	private final int xPadraoLabel = 15;
+	private final int widthPadraoCampo = 350;
+	private final int xPadraoCampo = 95;
+	private final int diferencaCampos = 28;
 	
 	public FUsuario() {
 
@@ -90,48 +96,48 @@ public class FUsuario extends JInternalFrame {
 	private void ComponentesCriar() {
 
 		// codigo
-		lblCode = new JLabel("Código:");
-		lblCode.setBounds(45, 20, 150, 25);
+		lblCode = new JLabel("Código:", JLabel.RIGHT);
+		lblCode.setBounds(xPadraoLabel, diferencaCampos, widthPadraoLabel, 25);
 		getContentPane().add(lblCode);
 
 		txfCode = new JTextField();
-		txfCode.setBounds(95, 20, 150, 25);
+		txfCode.setBounds(xPadraoCampo, diferencaCampos, 100, 25);
 		txfCode.setBackground(Color.decode("#FFFFFF"));
 		txfCode.setEditable(false);
 		getContentPane().add(txfCode);
 
 		// nome
-		lblNomeAluno = new JLabel("Nome:");
-		lblNomeAluno.setBounds(50, 55, 150, 25);
+		lblNomeAluno = new JLabel("Nome:", JLabel.RIGHT);
+		lblNomeAluno.setBounds(xPadraoLabel, diferencaCampos * 2, widthPadraoLabel, 25);
 		getContentPane().add(lblNomeAluno);
 
 		txfNomeAluno = new JTextField();
-		txfNomeAluno.setBounds(95, 55, 350, 25);
+		txfNomeAluno.setBounds(xPadraoCampo, diferencaCampos * 2, widthPadraoCampo, 25);
 		getContentPane().add(txfNomeAluno);
 
 		// data nascimento
-		lblDataNasc = new JLabel("Nascimento:");
-		lblDataNasc.setBounds(15, 90, 200, 25);
+		lblDataNasc = new JLabel("Nascimento:", JLabel.RIGHT);
+		lblDataNasc.setBounds(xPadraoLabel, diferencaCampos * 3, widthPadraoLabel, 25);
 		getContentPane().add(lblDataNasc);
 
 		txfDataNasc = new JTextField();
-		txfDataNasc.setBounds(95, 90, 150, 25);
+		txfDataNasc.setBounds(xPadraoCampo, diferencaCampos * 3, 150, 25);
 		getContentPane().add(txfDataNasc);
 
 		// sexo
 		lblSexo = new JLabel("Sexo:");
-		lblSexo.setBounds(250, 90, 200, 25);
+		lblSexo.setBounds(250, diferencaCampos * 3, widthPadraoLabel, 25);
 		getContentPane().add(lblSexo);
 
 		JRadioButton rbtMasculino = new JRadioButton("Masculino");
 		rbtMasculino.setSelected(false);
-		rbtMasculino.setBounds(285, 90, 85, 25);
+		rbtMasculino.setBounds(285, diferencaCampos * 3, 85, 25);
 		rbtMasculino.setBackground(Color.decode("#DEDEDE"));
 		getContentPane().add(rbtMasculino);
 
 		JRadioButton rbtFeminino = new JRadioButton("Feminino");
 		rbtFeminino.setSelected(false);
-		rbtFeminino.setBounds(370, 90, 100, 25);
+		rbtFeminino.setBounds(370, diferencaCampos * 3, 100, 25);
 		rbtFeminino.setBackground(Color.decode("#DEDEDE"));
 		getContentPane().add(rbtFeminino);
 
@@ -141,160 +147,147 @@ public class FUsuario extends JInternalFrame {
 
 		
 		//endereço
-		lblEndereco = new JLabel("Endereço:");
-		lblEndereco.setBounds(30,125,200,25);
+		lblEndereco = new JLabel("Endereço:", JLabel.RIGHT);
+		lblEndereco.setBounds(xPadraoLabel, diferencaCampos * 4,widthPadraoLabel, 25);
 		getContentPane().add(lblEndereco);
 		
 		txfEndereco = new JTextField();
-		txfEndereco.setBounds(95,125,350,25);
+		txfEndereco.setBounds(xPadraoCampo, diferencaCampos * 4,350,25);
 		getContentPane().add(txfEndereco);
 //		
 		//numero casa
-		lblNumeroCasa = new JLabel("Numero:");
-		lblNumeroCasa.setBounds(40,160,100,25);
+		lblNumeroCasa = new JLabel("Número:", JLabel.RIGHT);
+		lblNumeroCasa.setBounds(xPadraoLabel, diferencaCampos * 5,widthPadraoLabel, 25);
 		getContentPane().add(lblNumeroCasa);
 		
 		txfNumeroCasa = new JTextField();
-		txfNumeroCasa.setBounds(95,160,50,25);
+		txfNumeroCasa.setBounds(xPadraoCampo, diferencaCampos * 5,50,25);
 		getContentPane().add(txfNumeroCasa);
 		
 		//complemento
 		lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(150,160,100,25);
+		lblComplemento.setBounds(150, diferencaCampos * 5,150, 25);
 		getContentPane().add(lblComplemento);
 			
 		txfComplemento = new JTextField();
-		txfComplemento.setBounds(240,160,205,25);
+		txfComplemento.setBounds(240, diferencaCampos * 5,205,25);
 		getContentPane().add(txfComplemento);			
 		
-		//Cidade
-		lblCidade = new JLabel("Cidade:");
-		lblCidade.setBounds(150,230,100,25);
-		getContentPane().add(lblCidade);
-		
-		JComboBox combo = new JComboBox(cidades);
-		combo.setSelectedIndex(1);
-		combo.setBounds(200,230,245,25);
-		getContentPane().add(combo);
-				
-//		txfCidade = new JTextField();
-//		txfCidade.setBounds(95,195,150,25);
-//		getContentPane().add(txfCidade);
-
-		//bairro
-		lblBairro = new JLabel("Bairro:");
-		lblBairro.setBounds(250,195,150,25);
-		getContentPane().add(lblBairro);
-				
-		txfBairro = new JTextField();
-		txfBairro.setBounds(295,195,150,25);
-		getContentPane().add(txfBairro);
-
 		//UF
-		lblUF = new JLabel("UF:");
-		lblUF.setBounds(70,230,50,25);
+		lblUF = new JLabel("UF:", JLabel.RIGHT);
+		lblUF.setBounds(xPadraoLabel, diferencaCampos * 6,widthPadraoLabel, 25);
 		getContentPane().add(lblUF);
 		
 		JComboBox comboUF = new JComboBox(uf);
 		comboUF.setSelectedIndex(1);
-		comboUF.setBounds(95,230,50,25);
+		comboUF.setBounds(xPadraoCampo, diferencaCampos * 6,50,25);
 		getContentPane().add(comboUF);
-				
-//		txfUF = new JTextField();
-//		txfUF.setBounds(95,230,50,25);
-//		getContentPane().add(txfUF);
 
+		//Cidade
+		lblCidade = new JLabel("Cidade:");
+		lblCidade.setBounds(150, diferencaCampos * 6, widthPadraoLabel, 25);
+		getContentPane().add(lblCidade);
+		
+		JComboBox combo = new JComboBox(cidades);
+		combo.setSelectedIndex(1);
+		combo.setBounds(200, diferencaCampos * 6,245,25);
+		getContentPane().add(combo);
+		
 		//País
-		lblPais = new JLabel("País:");
-		lblPais.setBounds(60,265,100,25);
+		lblPais = new JLabel("País:", JLabel.RIGHT);
+		lblPais.setBounds(xPadraoLabel, diferencaCampos * 7,widthPadraoLabel, 25);
 		getContentPane().add(lblPais);
 				
 		JComboBox comboPais = new JComboBox(pais);
 		comboPais.setSelectedIndex(1);
-		comboPais.setBounds(95,265,350,25);
+		comboPais.setBounds(xPadraoCampo, diferencaCampos * 7,350,25);
 		getContentPane().add(comboPais);
 		
-//		txfPais = new JTextField();
-//		txfPais.setBounds(95,265,350,25);
-//		getContentPane().add(txfPais);
-		
-		
 		//CEP
-		lblCEP = new JLabel("CEP:");
-		lblCEP.setBounds(60,195,200,25);
+		lblCEP = new JLabel("CEP:", JLabel.RIGHT);
+		lblCEP.setBounds(xPadraoLabel, diferencaCampos * 8,widthPadraoLabel, 25);
 		getContentPane().add(lblCEP);
 				
 		txfCEP = new JTextField();
-		txfCEP.setBounds(95,195,150,25);
+		txfCEP.setBounds(xPadraoCampo, diferencaCampos * 8,150,25);
 		getContentPane().add(txfCEP);
-		
+
+		//bairro
+		lblBairro = new JLabel("Bairro:");
+		lblBairro.setBounds(250, diferencaCampos * 8,150,25);
+		getContentPane().add(lblBairro);
+				
+		txfBairro = new JTextField();
+		txfBairro.setBounds(295, diferencaCampos * 8,150,25);
+		getContentPane().add(txfBairro);
+						
 		//Telefone
-		lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds(35,300,200,25);
+		lblTelefone = new JLabel("Telefone:", JLabel.RIGHT);
+		lblTelefone.setBounds(xPadraoLabel, diferencaCampos * 9,widthPadraoLabel, 25);
 		getContentPane().add(lblTelefone);
 						
 		txfTelefone = new JTextField();
-		txfTelefone.setBounds(95,300,150,25);
+		txfTelefone.setBounds(xPadraoCampo, diferencaCampos * 9,150,25);
 		getContentPane().add(txfTelefone);
 
 		//Celular
 		lblCelular = new JLabel("Celular:");
-		lblCelular.setBounds(250,300,150,25);
+		lblCelular.setBounds(250, diferencaCampos * 9,150,25);
 		getContentPane().add(lblCelular);
 						
 		txfCelular = new JTextField();
-		txfCelular.setBounds(300,300,145,25);
+		txfCelular.setBounds(300, diferencaCampos * 9,145,25);
 		getContentPane().add(txfCelular);
 		
 		//Email
-		lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(55,335,200,25);
+		lblEmail = new JLabel("Email:", JLabel.RIGHT);
+		lblEmail.setBounds(xPadraoLabel, diferencaCampos * 10, widthPadraoLabel, 25);
 		getContentPane().add(lblEmail);
 								
 		txfEmail = new JTextField();
-		txfEmail.setBounds(95,335,350,25);
+		txfEmail.setBounds(xPadraoCampo, diferencaCampos * 10, 350,25);
 		getContentPane().add(txfEmail);
 
 		//Observacao
-		lblObservacao = new JLabel("Observacao:");
-		lblObservacao.setBounds(15,370,150,25);
+		lblObservacao = new JLabel("Observação:", JLabel.RIGHT);
+		lblObservacao.setBounds(xPadraoLabel, diferencaCampos * 11,widthPadraoLabel, 25);
 		getContentPane().add(lblObservacao);
 								
 		txfObservacao = new JTextArea();
-		txfObservacao.setBounds(95,370,350,115);
+		txfObservacao.setBounds(xPadraoCampo, diferencaCampos * 11,350,115);
 		txfObservacao.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		getContentPane().add(txfObservacao);
 		//button
 		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(95, 500, 100, 25);
+		btnCadastrar.setBounds(xPadraoCampo, (diferencaCampos * 15) + 5, 100, 25);
 		btnCadastrar.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println(getSelectedButtonText(group));
+				cadastrar();
+				
+			}
+
+			private void cadastrar() {
+				
+				AlunosDAO alunosDAO = new AlunosDAO();
+				Alunos alunos = new Alunos();
+				
+				
 				
 			}
 		});
 		getContentPane().add(btnCadastrar);		
 		
-//		//painel1
-//		
 		painel1 = new JPanel();
 		painel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		painel1.setBounds(0, 0, 500, 600	);
 		painel1.setBackground(Color.decode("#DEDEDE"));
 		getContentPane().add(painel1);
 
-
-//		telacheia = new JPanel();
-//		telacheia.setBounds(0,0,500,300);
-//		telacheia.setBackground(Color.decode("#C0C0C0"));
-//		getContentPane().add(telacheia);
-		
-
-
 	}
+	
 
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
 		for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -306,13 +299,6 @@ public class FUsuario extends JInternalFrame {
 		}
 
 		return null;
-
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		new FUsuario().setVisible(true);
 
 	}
 
