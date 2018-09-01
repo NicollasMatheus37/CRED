@@ -2,6 +2,8 @@ package resources.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -17,7 +19,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import TableModel.AlunoTableModel;
+import database.model.Alunos;
+import lib.ArquivoManipular;
 
 public class FBuscarAlunos extends JDialog{
 	
@@ -25,19 +34,11 @@ public class FBuscarAlunos extends JDialog{
 	private JTextField txfBuscar;
 	private JButton btnBuscar;
 	private JLabel lblDescricao;
-	
+	private List<Alunos> listaAlunos = new ArrayList<Alunos>();
 	private String[] buscar = {"Código","Nome"};
-	private String[] colunas = {"Código", "Nome", "Data de Nascimento", "UF", "Cidade", "Telefone", "Celular"};
-	Object [][] dados = {
-		    {"1", "Mauricio de Cabrau de Oliveira", "11/11/11","RS","Travesseiro","4835341113", "48999554433"},
-		    {"1", "Mauricio de Cabrau", "11/11/11","RS","Travesseiro","4835341113", "48999554433"},
-		    {"1", "Mauricio de Cabrau", "11/11/11","RS","Travesseiro","4835341113", "48999554433"},
-		    {"1", "Mauricio de Cabrau", "11/11/11","RS","Travesseiro","4835341113", "48999554433"},
-		    {"1", "Mauricio de Cabrau", "11/11/11","RS","Travesseiro","4835341113", "48999554433"},
-		    {"1", "Mauricio de Cabrau", "11/11/11","RS","Travesseiro","4835341113", "48999554433"}
-		};
+	private AlunoTableModel model;
+	ArquivoManipular am = new ArquivoManipular();
 
-	private DefaultTableModel model;
 	
 	public FBuscarAlunos() {
 		
@@ -91,30 +92,33 @@ public class FBuscarAlunos extends JDialog{
 		
 		painelFundo = new JPanel();
         painelFundo.setLayout(new GridLayout(1, 1));
-        
-        model = new DefaultTableModel(dados, colunas);
+
         
         JTable tabela = new JTable(model);
-      tabela.setCellSelectionEnabled(false);
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane barraRolagem = new JScrollPane(tabela);
         painelFundo.add(barraRolagem); 
         painelFundo.setBounds(25, 60, 800, 430);
         getContentPane().add(painelFundo);
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
-       
-//        setVisible(true);
-//		
-//		JTable tabela = new JTable(dados, colunas);
-//		
-//		JScrollPane scrollPane= new  JScrollPane(tabela);
-////		.add(scrollPane);
-//		getContentPane().add(scrollPane);
-
-
-//		telacheia = new JPanel();
-//		telacheia.setBounds(0,0,500,300);
-//		telacheia.setBackground(Color.decode("#C0C0C0"));
-//		getContentPane().add(telacheia);
+        
+        tabela.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent event) {
+				
+				if (tabela.getSelectedRow() != -1) {
+					String idSelecionado = tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
+				}
+			}
+		});
+        
+        
+        try {
+        	////??????????
+			listaAlunos = am.lerArquivoSerializado(null);
+			model.addListaDeAlunos(listaAlunos);
+		} catch (Exception e) {
+			System.err.printf("Erro: %s.\n", e.getMessage());
+		}
+        
 		
 	}
 
