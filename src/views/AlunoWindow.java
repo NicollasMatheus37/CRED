@@ -386,6 +386,11 @@ public class AlunoWindow extends JInternalFrame {
 		
 		txfNomeAluno.requestFocus();
 		
+		if (Usuarios.getUsuarioLogin().getPerfil().equals("CON")) {
+			btnExcluir.setEnabled(false);
+			btnSalvar.setEnabled(false);
+		}
+		
 		popularComboBox();
 	}
 	
