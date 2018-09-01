@@ -84,7 +84,7 @@ public class UsuariosDAO extends DaoGeneric<Usuarios> {
 		if (getLista() == null || getLista().isEmpty()) return null;
 		
 		for (Usuarios usuario : getLista()) {
-			if (modelo.getCdUsuario() == usuario.getCdUsuario()) {
+			if (modelo.getCdUsuario().equals(usuario.getCdUsuario())) {
 				return usuario;
 			}
 		}

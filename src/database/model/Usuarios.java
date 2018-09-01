@@ -13,6 +13,7 @@ public class Usuarios extends ModeloGenerico implements Serializable {
 	private String usuario;
 	private String senha;
 	private String perfil;
+	private static transient Usuarios usuarioLogin;
 
 	private final transient String USUARIO_ADMIN = "admin";
 	private final transient String SENHA_ADMIN = "admin";
@@ -100,13 +101,25 @@ public class Usuarios extends ModeloGenerico implements Serializable {
 
 		if (usuarios == null || usuarios.isEmpty()) {
 
-			return usuarioLogin.getUsuario().equals(USUARIO_ADMIN) && usuarioLogin.getSenha().equals(SENHA_ADMIN);
+			if (usuarioLogin.getUsuario().equals(USUARIO_ADMIN) && usuarioLogin.getSenha().equals(SENHA_ADMIN)) {
+				Usuarios usuario = new Usuarios();
+				usuario.setCdUsuario(0);
+				usuario.setUsuario(USUARIO_ADMIN);
+				usuario.setPerfil("ADM");
+				usuario.setSenha(SENHA_ADMIN);
+				
+				Usuarios.setUsuarioLogin(usuario);
+				
+				return true;
+			}
 
 		} else {
 
 			for (Usuarios usuario : usuarios) {
 				if (usuarioLogin.getUsuario().equals(usuario.getUsuario())
 						&& usuarioLogin.getSenha().equals(usuario.getSenha())) {
+					
+					Usuarios.setUsuarioLogin(usuario);
 					return true;
 				}
 			}
@@ -114,5 +127,15 @@ public class Usuarios extends ModeloGenerico implements Serializable {
 
 		return false;
 	}
+
+	public static Usuarios getUsuarioLogin() {
+		return usuarioLogin;
+	}
+
+	public static void setUsuarioLogin(Usuarios usuarioLogin) {
+		Usuarios.usuarioLogin = usuarioLogin;
+	}
+	
+	
 
 }

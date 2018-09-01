@@ -1,4 +1,4 @@
-package resources.views;
+package views;
 
 
 import java.awt.Color;
@@ -14,14 +14,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class FPrincipal extends JFrame {
+public class PrincipalWindow extends JFrame {
 
 	JDesktopPane desktopPane;
 	JMenuBar menuBar;
 	JMenu menuCadastro;
+	JMenu menuBusca;
+	JMenuItem itemCadastroAluno;
+	JMenuItem itemBuscaAluno;
 	JMenuItem itemCadastroUsuario;
 
-	public FPrincipal() {
+	public PrincipalWindow() {
 		// Define o tamanho da janela.
 		setSize(800, 600);
 		setMinimumSize(new Dimension(800, 600));
@@ -67,23 +70,55 @@ public class FPrincipal extends JFrame {
 		menuBar = new JMenuBar();
 		
 		menuCadastro = new JMenu("Cadastro");
+		menuBusca = new JMenu("Busca");
 		
-		itemCadastroUsuario = new JMenuItem("Usuário");
-		itemCadastroUsuario.addActionListener(new ActionListener() {
+		itemCadastroAluno = new JMenuItem("Aluno");
+		itemCadastroAluno.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FUsuario al = new FUsuario();
+				AlunoWindow al = new AlunoWindow();
 				al.setLocation(1, 1);
 				desktopPane.add(al);
 				al.setVisible(true);
 				
 			}
 		});
+
+		menuCadastro.add(itemCadastroAluno);
+		
+		itemCadastroUsuario = new JMenuItem("Usuário");
+		itemCadastroUsuario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UsuarioWindow usu = new UsuarioWindow();
+				usu.setLocation(1, 1);
+				desktopPane.add(usu);
+				usu.setVisible(true);
+				
+			}
+		});
 		
 		menuCadastro.add(itemCadastroUsuario);
 		
+		itemBuscaAluno = new JMenuItem("Aluno");
+		itemBuscaAluno.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BuscaAlunoWindow usu = new BuscaAlunoWindow();
+				usu.setLocation(1, 1);
+				desktopPane.add(usu);
+				usu.setVisible(true);
+				
+			}
+		});
+		
+		menuBusca.add(itemBuscaAluno);		
+
 		menuBar.add(menuCadastro);
+		//menuBar.add(menuBusca);
 		
 		setJMenuBar(menuBar);
 		add(desktopPane);

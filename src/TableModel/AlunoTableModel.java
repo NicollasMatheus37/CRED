@@ -64,9 +64,9 @@ public class AlunoTableModel extends AbstractTableModel {
 		case 2:
 			aluno.setEmail(aValue.toString());
 		case 3:
-			aluno.setTelefone(Double.parseDouble(aValue.toString()));
+			aluno.setTelefone(aValue.toString());
 		case 4:
-			aluno.setCelular(Double.parseDouble(aValue.toString()));
+			aluno.setCelular(aValue.toString());
 		default:
 			System.err.println("Índice da coluna inválido");
 		}
@@ -87,10 +87,10 @@ public class AlunoTableModel extends AbstractTableModel {
 			valueObject = alunoSelecionado.getEmail();
 			break;
 		case 3:
-			valueObject = alunoSelecionado.getTelefone().toString();
+			valueObject = alunoSelecionado.getTelefone();
 			break;
 		case 4:
-			valueObject = (alunoSelecionado.getCelular()).toString();
+			valueObject = alunoSelecionado.getCelular();
 			break;
 		default:
 			System.err.println("Índice inválido para propriedade do bean Alunos.class");

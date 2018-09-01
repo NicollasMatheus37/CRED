@@ -32,15 +32,14 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 			aluno.setCep(modelo.getCep());
 			aluno.setCidade(modelo.getCidade());
 			aluno.setComplemento(modelo.getComplemento());
-			aluno.setData_nascimento(modelo.getData_nascimento());
+			aluno.setDataNascimento(modelo.getDataNascimento());
 			aluno.setEmail(modelo.getEmail());
 			aluno.setEndereco(modelo.getEndereco());
-			aluno.setEstado(modelo.getEstado());
 			aluno.setNumero(modelo.getNumero());
 			aluno.setObservacao(modelo.getObservacao());
-			aluno.setPais(modelo.getPais());
+			aluno.setCidade(modelo.getCidade());
 			aluno.setSexo(modelo.getSexo());
-			aluno.setTelefone(modelo.getSexo());
+			aluno.setTelefone(modelo.getTelefone());
 		}
 		
 		
@@ -96,7 +95,7 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 		if (getLista() == null || getLista().isEmpty()) return null;
 		
 		for (Alunos aluno : getLista()) {
-			if (modelo.getCdAluno() == aluno.getCdAluno()) {
+			if (modelo.getCdAluno().equals(aluno.getCdAluno())) {
 				return aluno;
 			}
 		}

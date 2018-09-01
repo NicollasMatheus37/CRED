@@ -1,4 +1,4 @@
-package resources.views;
+package views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -28,7 +28,7 @@ import TableModel.AlunoTableModel;
 import database.model.Alunos;
 import lib.ArquivoManipular;
 
-public class FBuscarAlunos extends JDialog{
+public class BuscaAlunoWindow extends JInternalFrame{
 	
 	//componentes
 	private JTextField txfBuscar;
@@ -40,7 +40,7 @@ public class FBuscarAlunos extends JDialog{
 	ArquivoManipular am = new ArquivoManipular();
 
 	
-	public FBuscarAlunos() {
+	public BuscaAlunoWindow() {
 		
 			
 		// Define o tamanho da janela.
@@ -113,19 +113,12 @@ public class FBuscarAlunos extends JDialog{
         
         try {
         	////??????????
-			listaAlunos = am.lerArquivoSerializado(null);
+			
 			model.addListaDeAlunos(listaAlunos);
 		} catch (Exception e) {
 			System.err.printf("Erro: %s.\n", e.getMessage());
 		}
         
-		
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		new FBuscarAlunos().setVisible(true);
 		
 	}
 

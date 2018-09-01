@@ -1,4 +1,4 @@
-package resources.views;
+package views;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 import database.model.Usuarios;
 
-public class FLogin extends JDialog {
+public class LoginWindow extends JDialog {
 	
 	// Declara os componentes da tela.
 	private JTextField txfUsuario;
@@ -26,7 +26,7 @@ public class FLogin extends JDialog {
 	private JButton btnEntrar;
 	private JPanel telacheia;
 
-	public FLogin() {
+	public LoginWindow() {
 		
 		// Define o tamanho da janela.
 		setSize(400,200);
@@ -129,13 +129,13 @@ public class FLogin extends JDialog {
 	}
 	
 	private void abrirTelaPrincipal() {
-		new FPrincipal().setVisible(true);
+		new PrincipalWindow().setVisible(true);
 		hide();
 	}
 	
 	public static void main(String[] args) {
 		
-		new FLogin().setVisible(true);
+		new LoginWindow().setVisible(true);
 
 	}
 
