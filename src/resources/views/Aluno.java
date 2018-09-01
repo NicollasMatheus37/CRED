@@ -4,12 +4,13 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Aluno extends JInternalFrame{
+public class Aluno extends JDialog{
 	
 	//componentes
 	private JTextField txfNomeAluno;
