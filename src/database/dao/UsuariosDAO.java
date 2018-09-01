@@ -99,7 +99,7 @@ public class UsuariosDAO extends DaoGeneric<Usuarios> {
 
 	@Override
 	public Integer getMax() {
-		return lista.isEmpty() ? 0 : lista.stream().max(Comparator.comparing(Usuarios::getCdUsuario)).get().getCdUsuario() + 1;
+		return lista.isEmpty() ? 1 : lista.stream().max(Comparator.comparing(Usuarios::getCdUsuario)).get().getCdUsuario() + 1;
 	}
 
 

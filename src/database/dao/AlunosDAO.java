@@ -111,7 +111,7 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 
 	@Override
 	public Integer getMax() {
-		return lista.isEmpty() ? 0 : lista.stream().max(Comparator.comparing(Alunos::getCdAluno)).get().getCdAluno() + 1;
+		return lista.isEmpty() ? 1 : lista.stream().max(Comparator.comparing(Alunos::getCdAluno)).get().getCdAluno() + 1;
 	}
 
 
