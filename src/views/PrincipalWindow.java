@@ -14,6 +14,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import database.model.Usuarios;
+
 public class PrincipalWindow extends JFrame {
 
 	JDesktopPane desktopPane;
@@ -100,7 +102,10 @@ public class PrincipalWindow extends JFrame {
 			}
 		});
 		
-		menuCadastro.add(itemCadastroUsuario);
+		
+		if (!Usuarios.getUsuarioLogin().getPerfil().equals("CON")) {
+			menuCadastro.add(itemCadastroUsuario);
+		}
 		
 		itemBuscaAluno = new JMenuItem("Aluno");
 		itemBuscaAluno.addActionListener(new ActionListener() {
