@@ -10,13 +10,22 @@ import java.util.List;
 public class ArquivoManipular { 
 
 	public static final boolean escreverArquivoSerializado(List<?> listaObjeto, String nomeArquivo) {
+		ObjectOutputStream arquivo = null;
 		
 	    try {
-	        new ObjectOutputStream(new FileOutputStream(nomeArquivo)).writeObject(listaObjeto);
+	    	arquivo =  new ObjectOutputStream(new FileOutputStream(nomeArquivo));
+	    	arquivo.writeObject(listaObjeto);
 
 	    } catch (IOException e) {
 
 			return false;
+	    } finally {
+	    	try {
+	    		if (arquivo != null) arquivo.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 	    
 	    
@@ -26,14 +35,23 @@ public class ArquivoManipular {
 	public static final List<?> lerArquivoSerializado(String nomeArquivo) {
 
         List<?> listaObjeto;
+        ObjectInputStream arquivo = null;
 		
 		try {
 	       
-	        listaObjeto = (List<?>) new ObjectInputStream(new FileInputStream(nomeArquivo)).readObject();
+			arquivo = new ObjectInputStream(new FileInputStream(nomeArquivo));
+	        listaObjeto = (List<?>) arquivo.readObject();
 
 		 } catch (IOException|ClassNotFoundException e) {
 			
 			 return null;
+		 } finally {
+			 try {
+				 if (arquivo != null) arquivo.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		 }
 		 
 		 return listaObjeto;
