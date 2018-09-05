@@ -443,6 +443,11 @@ public class AlunoWindow extends JInternalFrame {
 		} catch (Exception e) {
 		}
 		
+		if (txfNomeAluno.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Informe o nome do aluno");
+			return;
+		}
+		
 		alunos.setAluno(txfNomeAluno.getText());
 		alunos.setBairro(txfBairro.getText());
 		alunos.setCelular(txfCelular.getText());
@@ -455,7 +460,7 @@ public class AlunoWindow extends JInternalFrame {
 		alunos.setObservacao(txfObservacao.getText());
 		alunos.setTelefone(txfTelefone.getText());
 		alunos.setCidade((Cidades)cbxCidades.getSelectedItem());
-		
+				
 		if (rbtMasculino.isSelected()) {
 			alunos.setSexo("M");
 		} else {

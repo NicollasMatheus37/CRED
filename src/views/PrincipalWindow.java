@@ -42,7 +42,7 @@ public class PrincipalWindow extends JFrame {
 		setResizable(true);
 
 		// Define o método de fechamento da janela.
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBackground(Color.black);
 
 		setLocationRelativeTo(null);

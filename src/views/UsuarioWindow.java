@@ -194,6 +194,16 @@ public class UsuarioWindow extends JInternalFrame {
 		} catch (Exception e) {
 		}
 		
+		if (txfUsername.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Informe o nome do usuário");
+			return;
+		}
+		
+		if (passSenha.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Informe a senha do usuário");
+			return;
+		}
+		
 		usuario.setUsuario(txfUsername.getText());
 		usuario.setSenha(passSenha.getText());
 		usuario.setPerfil("CON");
