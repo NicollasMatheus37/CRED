@@ -179,7 +179,7 @@ public class UsuarioWindow extends JInternalFrame {
 	    txfCode.setEnabled(!habilitar);
 	    txfUsername.setEnabled(habilitar);
 	    passSenha.setEnabled(habilitar);
-	    combo.setEnabled(false);
+	    combo.setEnabled(habilitar);
 		btnExcluir.setEnabled(habilitar);
 		btnSalvar.setEnabled(habilitar);
 		
@@ -275,6 +275,11 @@ public class UsuarioWindow extends JInternalFrame {
 			Usuarios usuario = new Usuarios();
 			
 			usuario.setCdUsuario(Integer.parseInt(txfCode.getText()));
+			
+			if (usuario.getCdUsuario().equals(Usuarios.getUsuarioLogin().getCdUsuario())) {
+				JOptionPane.showMessageDialog(null, "Não é possível excluir o próprio usuário");
+				return;
+			}
 			
 			new UsuariosDAO().excluir(usuario);
 			

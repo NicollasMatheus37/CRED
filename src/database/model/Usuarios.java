@@ -1,7 +1,7 @@
 package database.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.List;import java.util.stream.Collectors;
 
 import generic.ModeloGenerico;
 import database.dao.UsuariosDAO;
@@ -99,22 +99,23 @@ public class Usuarios extends ModeloGenerico implements Serializable {
 		UsuariosDAO usuariosDAO = new UsuariosDAO();
 		List<Usuarios> usuarios = usuariosDAO.consultar(false);
 
-		if (usuarios == null || usuarios.isEmpty()) {
-
-			if (usuarioLogin.getUsuario().equals(USUARIO_ADMIN) && usuarioLogin.getSenha().equals(SENHA_ADMIN)) {
-				Usuarios usuario = new Usuarios();
-				usuario.setCdUsuario(0);
-				usuario.setUsuario(USUARIO_ADMIN);
-				usuario.setPerfil("ADM");
-				usuario.setSenha(SENHA_ADMIN);
-				
-				Usuarios.setUsuarioLogin(usuario);
-				
-				return true;
-			}
-
+		if ((usuarios == null || usuarios.isEmpty() ||
+				usuarios.stream().filter(usu -> usu.getPerfil().equals("ADM")).collect(Collectors.toList()).size() == 0)
+				&& (usuarioLogin.getUsuario().equals(USUARIO_ADMIN) && usuarioLogin.getSenha().equals(SENHA_ADMIN))) {
+			
+			Usuarios usuario = new Usuarios();
+			usuario.setCdUsuario(0);
+			usuario.setUsuario(USUARIO_ADMIN);
+			usuario.setPerfil("ADM");
+			usuario.setSenha(SENHA_ADMIN);
+			
+			Usuarios.setUsuarioLogin(usuario);
+			
+			return true;
+			
 		} else {
-
+			
+			
 			for (Usuarios usuario : usuarios) {
 				if (usuarioLogin.getUsuario().equals(usuario.getUsuario())
 						&& usuarioLogin.getSenha().equals(usuario.getSenha())) {
