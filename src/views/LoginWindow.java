@@ -74,7 +74,7 @@ public class LoginWindow extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				validarLogin();
+				if (!validarLogin()) return;
 				btnEntrar.requestFocus();
 				
 			}
@@ -115,6 +115,18 @@ public class LoginWindow extends JDialog {
 		
 		usuario.setUsuario(txfUsuario.getText());
 		usuario.setSenha(pwfSenha.getText());
+		
+		if (usuario.getUsuario().equals("")) {
+			JOptionPane.showMessageDialog(null, "Informe o usuário");
+			txfUsuario.requestFocus();
+			return false;
+		}
+		
+		if (usuario.getSenha().equals("")) {
+			JOptionPane.showMessageDialog(null, "Informe a senha");
+			pwfSenha.requestFocus();
+			return false;
+		}
 		
 		if (usuario.validarLogin(usuario)) {
 			abrirTelaPrincipal();
