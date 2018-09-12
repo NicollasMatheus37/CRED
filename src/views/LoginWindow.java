@@ -74,8 +74,8 @@ public class LoginWindow extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (!validarLogin()) return;
 				btnEntrar.requestFocus();
+				if (!validarLogin()) return;
 				
 			}
 		});

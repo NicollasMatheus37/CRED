@@ -74,6 +74,16 @@ public class UsuarioWindow extends JInternalFrame {
 		txfCode = new JTextField();
 		txfCode.setEnabled(false);
 		txfCode.setBounds(xPadraoCampo, diferencaCampos, 100, 25);
+		
+		txfCode.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				consultar();
+				
+			}
+		});
+		
 		getContentPane().add(txfCode);
 		
 		lblUsername = new JLabel("Usuário", JLabel.RIGHT);
@@ -131,6 +141,7 @@ public class UsuarioWindow extends JInternalFrame {
 		
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(xPadraoCampo + 236, (diferencaCampos * 5) + 5, 114, 25);
+		btnExcluir.setEnabled(false);
 		btnExcluir.addActionListener(new ActionListener() {
 			
 			@Override
@@ -180,7 +191,6 @@ public class UsuarioWindow extends JInternalFrame {
 	    txfUsername.setEnabled(habilitar);
 	    passSenha.setEnabled(habilitar);
 	    combo.setEnabled(habilitar);
-		btnExcluir.setEnabled(habilitar);
 		btnSalvar.setEnabled(habilitar);
 		
 	}
@@ -196,11 +206,13 @@ public class UsuarioWindow extends JInternalFrame {
 		
 		if (txfUsername.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Informe o nome do usuário");
+			txfUsername.requestFocus();
 			return;
 		}
 		
 		if (passSenha.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Informe a senha do usuário");
+			passSenha.requestFocus();
 			return;
 		}
 		
@@ -251,6 +263,7 @@ public class UsuarioWindow extends JInternalFrame {
 		} else {
 			zerarVariaveis();
 			habilitarCampos(false);
+			btnExcluir.setEnabled(false);
 			consultar = true;
 			txfCode.requestFocus();
 		}
@@ -266,6 +279,8 @@ public class UsuarioWindow extends JInternalFrame {
 		if (usuario.getPerfil().equals("ADM")) combo.setSelectedIndex(0);
 		
 		txfUsername.requestFocus();
+		
+		btnExcluir.setEnabled(true);
 		
 		
 	}
