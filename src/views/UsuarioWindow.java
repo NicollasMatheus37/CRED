@@ -297,7 +297,8 @@ public class UsuarioWindow extends JInternalFrame {
 			}
 			
 			new UsuariosDAO().excluir(usuario);
-			
+
+			btnExcluir.setEnabled(false);
 			habilitarCampos(true);
 			zerarVariaveis();
 

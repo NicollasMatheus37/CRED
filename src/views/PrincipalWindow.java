@@ -7,9 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.HierarchyBoundsListener;
 import java.awt.event.HierarchyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -25,6 +28,7 @@ public class PrincipalWindow extends JFrame {
 	JMenuItem itemCadastroAluno;
 	JMenuItem itemBuscaAluno;
 	JMenuItem itemCadastroUsuario;
+	JLabel lbUsuarioHora;
 
 	public PrincipalWindow() {
 		// Define o tamanho da janela.
@@ -51,6 +55,59 @@ public class PrincipalWindow extends JFrame {
 	}
 	
 	private void criarComponentes() {
+		
+		lbUsuarioHora = new JLabel("asd", JLabel.RIGHT);
+		lbUsuarioHora.addHierarchyBoundsListener(new HierarchyBoundsListener() {
+			
+			@Override
+			public void ancestorResized(HierarchyEvent e) {
+				Dimension d = getSize();
+				lbUsuarioHora.setBounds(((int) d.getWidth()) - 370, ((int) d.getHeight()) - 85, 350, 20);
+			}
+				
+			
+			@Override
+			public void ancestorMoved(HierarchyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				
+				String usuario = "";
+				String hora = "";
+				
+				usuario = Usuarios.getUsuarioLogin().getUsuario();
+				
+				if (usuario.length() > 20) {
+					usuario = usuario.substring(0, 20)+"...";
+				}
+				
+				usuario += " ("+Usuarios.getUsuarioLogin().getCdUsuario() +")";
+				
+				try {
+					
+					while (!Thread.currentThread().isInterrupted()) {
+						
+						hora = format.format(new Date());
+						lbUsuarioHora.setText(usuario + "    " + hora);
+						
+						Thread.sleep(1000);
+					}
+					
+				} catch (Exception e) {
+					
+				}
+			
+				
+			}
+		}).start();
 		
 		desktopPane = new JDesktopPane();
 //		desktopPane.setSize(800,600);
@@ -126,6 +183,7 @@ public class PrincipalWindow extends JFrame {
 		//menuBar.add(menuBusca);
 		
 		setJMenuBar(menuBar);
+		desktopPane.add(lbUsuarioHora);
 		add(desktopPane);
 		
 	}

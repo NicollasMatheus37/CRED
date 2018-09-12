@@ -29,7 +29,7 @@ public class UsuariosDAO extends DaoGeneric<Usuarios> {
 			if (getLista().stream().filter(usu -> usu.getUsuario().equals(modelo.getUsuario())).collect(Collectors.toList()).size() != 0) {
 				JOptionPane.showMessageDialog(null, "Já existe um registro com esse 'Usuário'");
 				return false;
-			}
+			} 	
 			
 			lista.add(modelo);
 						
