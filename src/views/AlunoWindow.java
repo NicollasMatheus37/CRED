@@ -386,7 +386,7 @@ public class AlunoWindow extends JInternalFrame {
 		
 		txfNomeAluno.requestFocus();
 		
-		if (Usuarios.getUsuarioLogin().getPerfil().equals("CON")) {
+		if (Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			btnExcluir.setEnabled(false);
 			btnSalvar.setEnabled(false);
 		}
@@ -415,7 +415,7 @@ public class AlunoWindow extends JInternalFrame {
 		rbtFeminino.setEnabled(habilitar);
 		rbtMasculino.setEnabled(habilitar);
 		
-		if (Usuarios.getUsuarioLogin().getPerfil().equals("CON")) {
+		if (Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			btnExcluir.setEnabled(false);
 			btnSalvar.setEnabled(false);
 		}

@@ -160,7 +160,7 @@ public class PrincipalWindow extends JFrame {
 		});
 		
 		
-		if (!Usuarios.getUsuarioLogin().getPerfil().equals("CON")) {
+		if (!Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			menuCadastro.add(itemCadastroUsuario);
 		}
 		

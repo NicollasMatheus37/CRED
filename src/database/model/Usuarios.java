@@ -100,13 +100,13 @@ public class Usuarios extends ModeloGenerico implements Serializable {
 		List<Usuarios> usuarios = usuariosDAO.consultar(false);
 
 		if ((usuarios == null || usuarios.isEmpty() ||
-				usuarios.stream().filter(usu -> usu.getPerfil().equals("ADM")).collect(Collectors.toList()).size() == 0)
+				usuarios.stream().filter(usu -> usu.getPerfil().equals("Administrador")).collect(Collectors.toList()).size() == 0)
 				&& (usuarioLogin.getUsuario().equals(USUARIO_ADMIN) && usuarioLogin.getSenha().equals(SENHA_ADMIN))) {
 			
 			Usuarios usuario = new Usuarios();
 			usuario.setCdUsuario(0);
 			usuario.setUsuario(USUARIO_ADMIN);
-			usuario.setPerfil("ADM");
+			usuario.setPerfil("Administrador");
 			usuario.setSenha(SENHA_ADMIN);
 			
 			Usuarios.setUsuarioLogin(usuario);

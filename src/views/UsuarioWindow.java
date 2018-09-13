@@ -218,10 +218,10 @@ public class UsuarioWindow extends JInternalFrame {
 		
 		usuario.setUsuario(txfUsername.getText());
 		usuario.setSenha(passSenha.getText());
-		usuario.setPerfil("CON");
+		usuario.setPerfil("Convidado");
 		
 		if (combo.getSelectedIndex() == 0) {
-			usuario.setPerfil("ADM");
+			usuario.setPerfil("Administrador");
 		}
 		
 		if (usuarioDAO.salvar(usuario)) {
@@ -276,7 +276,7 @@ public class UsuarioWindow extends JInternalFrame {
 		passSenha.setText(usuario.getSenha());
 		combo.setSelectedIndex(1);
 		
-		if (usuario.getPerfil().equals("ADM")) combo.setSelectedIndex(0);
+		if (usuario.getPerfil().equals("Administrador")) combo.setSelectedIndex(0);
 		
 		txfUsername.requestFocus();
 		
