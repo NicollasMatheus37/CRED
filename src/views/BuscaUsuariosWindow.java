@@ -39,6 +39,8 @@ public class BuscaUsuariosWindow extends JDialog{
 	private JLabel lblDescricao;
 	private List<Usuarios> listaUsuarios = new ArrayList<Usuarios>();
 	private UsuarioTableModel model;
+	private String[] buscar = {"Código","Usuário"};
+
 	ArquivoManipular am = new ArquivoManipular();
 
 	
@@ -46,11 +48,11 @@ public class BuscaUsuariosWindow extends JDialog{
 		
 			
 		// Define o tamanho da janela.
-		setSize(1000,600);	
+		setSize(860,600);	
 					
 					
 		// Define o titulo da janela.
-		setTitle("Tela Busca de Alunos");
+		setTitle("Tela Busca de Usuários");
 			
 		// Seta o layout a ser utilizado (NULL significa que não irá utilizar nenhum).
 		setLayout(null);
@@ -69,17 +71,24 @@ public class BuscaUsuariosWindow extends JDialog{
 	private void ComponentesCriar() {
 		
 
-		lblDescricao = new JLabel("Pesquisar :");
+		lblDescricao = new JLabel("Pesquisar por:");
 		lblDescricao.setBounds(25, 25, 200, 25);
 		getContentPane().add(lblDescricao);
 		
 		txfBuscar = new JTextField();
-		txfBuscar.setBounds(100,25,350,25);
+		txfBuscar.setBounds(250,25,350,25);
 		getContentPane().add(txfBuscar);
-	
+		
+		
+		JComboBox comboBusca = new JComboBox(buscar);
+		comboBusca.setSelectedIndex(0);
+		comboBusca.setBounds(130,25,100,25);
+		getContentPane().add(comboBusca);
+		
+		
 		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(460, 25, 100, 25);
+		btnBuscar.setBounds(625, 25, 100, 25);
 		getContentPane().add(btnBuscar);
 		
 		
