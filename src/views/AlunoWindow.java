@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import database.dao.AlunosDAO;
 import database.dao.CidadesDAO;
@@ -36,12 +38,12 @@ public class AlunoWindow extends JInternalFrame {
 	private JLabel lblNomeAluno;
 	private JTextField txfCode;
 	private JLabel lblCode;
-	private JTextField txfDataNasc;
+	private JFormattedTextField txfDataNasc;
 	private JLabel lblDataNasc;
 	private JLabel lblSexo;
 	private JTextField txfEndereco;
 	private JLabel lblEndereco;
-	private JTextField txfNumeroCasa;
+	private JFormattedTextField txfNumeroCasa;
 	private JLabel lblNumeroCasa;
 	private JTextField txfComplemento;
 	private JLabel lblComplemento;
@@ -49,13 +51,13 @@ public class AlunoWindow extends JInternalFrame {
 	private JTextField txfBairro;
 	private JLabel lblBairro;
 	private JLabel lblUF;
-	private JTextField txfCEP;
+	private JFormattedTextField txfCEP;
 	private JLabel lblCEP;
 	private JTextField txfPais;
 	private JLabel lblPais;
-	private JTextField txfTelefone;
+	private JFormattedTextField txfTelefone;
 	private JLabel lblTelefone;
-	private JTextField txfCelular;
+	private JFormattedTextField txfCelular;
 	private JLabel lblCelular;
 	private JTextField txfEmail;
 	private JLabel lblEmail;
@@ -81,6 +83,8 @@ public class AlunoWindow extends JInternalFrame {
 	
 	private boolean consultar = false;
 	
+	MaskFormatter formatData;
+	
 	public AlunoWindow() {
 
 		// Define o tamanho da janela.
@@ -103,6 +107,10 @@ public class AlunoWindow extends JInternalFrame {
 		// Cria os componentes.
 		criarComponentes();
 
+	}
+	
+	public MaskFormatter maskFormatter(String format) throws ParseException {
+		return (new MaskFormatter(format));
 	}
 
 	private void criarComponentes() {
@@ -131,9 +139,16 @@ public class AlunoWindow extends JInternalFrame {
 		lblDataNasc.setBounds(xPadraoLabel, diferencaCampos * 3, widthPadraoLabel, 25);
 		getContentPane().add(lblDataNasc);
 
-		txfDataNasc = new JTextField();
-		txfDataNasc.setBounds(xPadraoCampo, diferencaCampos * 3, 150, 25);
-		getContentPane().add(txfDataNasc);
+		
+		try {
+			txfDataNasc = new  JFormattedTextField(maskFormatter("##/##/####"));
+			txfDataNasc.setBounds(xPadraoCampo, diferencaCampos * 3, 150, 25);
+			getContentPane().add(txfDataNasc);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 
 		// sexo
 		lblSexo = new JLabel("Sexo:");
@@ -170,9 +185,14 @@ public class AlunoWindow extends JInternalFrame {
 		lblNumeroCasa.setBounds(xPadraoLabel, diferencaCampos * 5,widthPadraoLabel, 25);
 		getContentPane().add(lblNumeroCasa);
 		
-		txfNumeroCasa = new JTextField();
-		txfNumeroCasa.setBounds(xPadraoCampo, diferencaCampos * 5,50,25);
-		getContentPane().add(txfNumeroCasa);
+		try {
+			txfNumeroCasa = new  JFormattedTextField(maskFormatter("######"));
+			txfNumeroCasa.setBounds(xPadraoCampo, diferencaCampos * 5,50,25);
+			getContentPane().add(txfNumeroCasa);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		//complemento
 		lblComplemento = new JLabel("Complemento:");
@@ -238,10 +258,14 @@ public class AlunoWindow extends JInternalFrame {
 		lblCEP.setBounds(xPadraoLabel, diferencaCampos * 8,widthPadraoLabel, 25);
 		getContentPane().add(lblCEP);
 				
-		txfCEP = new JTextField();
-		txfCEP.setBounds(xPadraoCampo, diferencaCampos * 8,150,25);
-		getContentPane().add(txfCEP);
-
+		try {
+			txfCEP = new  JFormattedTextField(maskFormatter("#####-###"));
+			txfCEP.setBounds(xPadraoCampo, diferencaCampos * 8,150,25);
+			getContentPane().add(txfCEP);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//bairro
 		lblBairro = new JLabel("Bairro:");
 		lblBairro.setBounds(250, diferencaCampos * 8,150,25);
@@ -256,19 +280,27 @@ public class AlunoWindow extends JInternalFrame {
 		lblTelefone.setBounds(xPadraoLabel, diferencaCampos * 9,widthPadraoLabel, 25);
 		getContentPane().add(lblTelefone);
 						
-		txfTelefone = new JTextField();
-		txfTelefone.setBounds(xPadraoCampo, diferencaCampos * 9,150,25);
-		getContentPane().add(txfTelefone);
-
+		try {
+			txfTelefone = new  JFormattedTextField(maskFormatter("## ####-####"));
+			txfTelefone.setBounds(xPadraoCampo, diferencaCampos * 9,150,25);
+			getContentPane().add(txfTelefone);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Celular
 		lblCelular = new JLabel("Celular:");
 		lblCelular.setBounds(250, diferencaCampos * 9,150,25);
 		getContentPane().add(lblCelular);
 						
-		txfCelular = new JTextField();
-		txfCelular.setBounds(300, diferencaCampos * 9,145,25);
-		getContentPane().add(txfCelular);
-		
+		try {
+			txfCelular = new  JFormattedTextField(maskFormatter("## # ####-####"));
+			txfCelular.setBounds(300, diferencaCampos * 9,145,25);
+			getContentPane().add(txfCelular);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Email
 		lblEmail = new JLabel("Email:", JLabel.RIGHT);
 		lblEmail.setBounds(xPadraoLabel, diferencaCampos * 10, widthPadraoLabel, 25);
