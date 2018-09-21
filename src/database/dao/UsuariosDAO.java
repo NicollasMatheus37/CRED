@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
 import database.model.Alunos;
+import database.model.Cidades;
 import database.model.Usuarios;
 import generic.DaoGeneric;
 import lib.ArquivoManipular;
@@ -72,6 +73,19 @@ public class UsuariosDAO extends DaoGeneric<Usuarios> {
 		return getLista();
 
 	}
+	
+	public List<Usuarios> consultar(Integer cdUsuario){
+	//	usuario -> usuario.getUsuario().equals(nmUsuario)
+		
+		return (List<Usuarios>) getLista().stream().filter(usuario -> usuario.getCdUsuario().equals(cdUsuario)).collect(Collectors.toList());
+		
+	}
+	public List<Usuarios> consultar(String nmUsuario){
+		//	usuario -> usuario.getUsuario().equals(nmUsuario)
+			
+			return (List<Usuarios>) getLista().stream().filter(usuario -> usuario.getUsuario().toLowerCase().contains(nmUsuario.toLowerCase())).collect(Collectors.toList());
+			
+		}
 
 	@Override
 	protected List<Usuarios> getLista() {

@@ -66,6 +66,7 @@ public class CidadesDAO extends DaoGeneric<Cidades> {
 	}
 	
 	public List<Cidades> consultar(String uf){
+	//	usuario -> usuario.getUsuario().equals(nmUsuario)
 		
 		return (List<Cidades>) getLista().stream().filter(cidade -> cidade.getEstado().equals(uf)).collect(Collectors.toList());
 		

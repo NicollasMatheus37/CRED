@@ -10,7 +10,7 @@ public class AlunoTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
 
 	private List<Alunos> alunos;
-	private String[] colunas = new String[] { "ID", "Código", "Nome", "Email" };
+	private String[] colunas = new String[] { "Código", "Nome", "Email", "Telefone", "Celular" };
 
 	public AlunoTableModel(List<Alunos> alunos) {
 		this.alunos = alunos;
@@ -49,7 +49,7 @@ public class AlunoTableModel extends AbstractTableModel {
 		fireTableCellUpdated(rowIndex, 1);
 		fireTableCellUpdated(rowIndex, 2);
 		fireTableCellUpdated(rowIndex, 3);
-		fireTableCellUpdated(rowIndex, 3);
+		fireTableCellUpdated(rowIndex, 4);
 	}
 
 	@Override

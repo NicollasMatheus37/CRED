@@ -1,6 +1,5 @@
 package TableModel;
 
-
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -90,11 +89,11 @@ public class UsuarioTableModel extends AbstractTableModel {
 		return false;
 	}
 
-	public Usuarios getAluno(int indiceLinha) {
+	public Usuarios getUsuario(int indiceLinha) {
 		return usuarios.get(indiceLinha);
 	}
 
-	public void addAluno(Usuarios u) {
+	public void addUsuario(Usuarios u) {
 		usuarios.add(u);
 
 		int ultimoIndice = getRowCount() - 1;
@@ -102,7 +101,7 @@ public class UsuarioTableModel extends AbstractTableModel {
 		fireTableRowsInserted(ultimoIndice, ultimoIndice);
 	}
 
-	public void removeAluno(int indiceLinha) {
+	public void removeUsuario(int indiceLinha) {
 		usuarios.remove(indiceLinha);
 
 		fireTableRowsDeleted(indiceLinha, indiceLinha);

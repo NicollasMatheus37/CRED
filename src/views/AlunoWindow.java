@@ -71,8 +71,9 @@ public class AlunoWindow extends JInternalFrame {
 	private JPanel painel1;
 	private JRadioButton rbtMasculino;
 	private JRadioButton rbtFeminino;
-	String[] uf = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", };
-	
+	String[] uf = { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE",
+			"PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", };
+
 	List<Cidades> cidades;
 
 	private final int widthPadraoLabel = 75;
@@ -80,11 +81,11 @@ public class AlunoWindow extends JInternalFrame {
 	private final int widthPadraoCampo = 350;
 	private final int xPadraoCampo = 95;
 	private final int diferencaCampos = 28;
-	
+
 	private boolean consultar = false;
-	
+
 	MaskFormatter formatData;
-	
+
 	public AlunoWindow() {
 
 		// Define o tamanho da janela.
@@ -108,7 +109,7 @@ public class AlunoWindow extends JInternalFrame {
 		criarComponentes();
 
 	}
-	
+
 	public MaskFormatter maskFormatter(String format) throws ParseException {
 		return (new MaskFormatter(format));
 	}
@@ -139,16 +140,14 @@ public class AlunoWindow extends JInternalFrame {
 		lblDataNasc.setBounds(xPadraoLabel, diferencaCampos * 3, widthPadraoLabel, 25);
 		getContentPane().add(lblDataNasc);
 
-		
 		try {
-			txfDataNasc = new  JFormattedTextField(maskFormatter("##/##/####"));
+			txfDataNasc = new JFormattedTextField(maskFormatter("##/##/####"));
 			txfDataNasc.setBounds(xPadraoCampo, diferencaCampos * 3, 150, 25);
 			getContentPane().add(txfDataNasc);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 
 		// sexo
 		lblSexo = new JLabel("Sexo:");
@@ -170,211 +169,208 @@ public class AlunoWindow extends JInternalFrame {
 		ButtonGroup group = new ButtonGroup();
 		group.add(rbtMasculino);
 		group.add(rbtFeminino);
-		
-		//endereço
+
+		// endereço
 		lblEndereco = new JLabel("Endereço:", JLabel.RIGHT);
-		lblEndereco.setBounds(xPadraoLabel, diferencaCampos * 4,widthPadraoLabel, 25);
+		lblEndereco.setBounds(xPadraoLabel, diferencaCampos * 4, widthPadraoLabel, 25);
 		getContentPane().add(lblEndereco);
-		
+
 		txfEndereco = new JTextField();
-		txfEndereco.setBounds(xPadraoCampo, diferencaCampos * 4,350,25);
+		txfEndereco.setBounds(xPadraoCampo, diferencaCampos * 4, 350, 25);
 		getContentPane().add(txfEndereco);
 //		
-		//numero casa
+		// numero casa
 		lblNumeroCasa = new JLabel("Número:", JLabel.RIGHT);
-		lblNumeroCasa.setBounds(xPadraoLabel, diferencaCampos * 5,widthPadraoLabel, 25);
+		lblNumeroCasa.setBounds(xPadraoLabel, diferencaCampos * 5, widthPadraoLabel, 25);
 		getContentPane().add(lblNumeroCasa);
-		
+
 		try {
-			txfNumeroCasa = new  JFormattedTextField(maskFormatter("######"));
-			txfNumeroCasa.setBounds(xPadraoCampo, diferencaCampos * 5,50,25);
+			txfNumeroCasa = new JFormattedTextField(maskFormatter("######"));
+			txfNumeroCasa.setBounds(xPadraoCampo, diferencaCampos * 5, 50, 25);
 			getContentPane().add(txfNumeroCasa);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		//complemento
+
+		// complemento
 		lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(150, diferencaCampos * 5,150, 25);
+		lblComplemento.setBounds(150, diferencaCampos * 5, 150, 25);
 		getContentPane().add(lblComplemento);
-			
+
 		txfComplemento = new JTextField();
-		txfComplemento.setBounds(240, diferencaCampos * 5,205,25);
-		getContentPane().add(txfComplemento);			
-		
-		//UF
+		txfComplemento.setBounds(240, diferencaCampos * 5, 205, 25);
+		getContentPane().add(txfComplemento);
+
+		// UF
 		lblUF = new JLabel("UF:", JLabel.RIGHT);
-		lblUF.setBounds(xPadraoLabel, diferencaCampos * 6,widthPadraoLabel, 25);		
+		lblUF.setBounds(xPadraoLabel, diferencaCampos * 6, widthPadraoLabel, 25);
 		getContentPane().add(lblUF);
-		
+
 		cbxUF = new JComboBox(uf);
 		cbxUF.setSelectedIndex(1);
-		cbxUF.setBounds(xPadraoCampo, diferencaCampos * 6,50,25);
+		cbxUF.setBounds(xPadraoCampo, diferencaCampos * 6, 50, 25);
 		cbxUF.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 				popularComboBox();
-				
+
 			}
 		});
 		getContentPane().add(cbxUF);
-				
-		//Cidade
+
+		// Cidade
 		lblCidade = new JLabel("Cidade:");
 		lblCidade.setBounds(150, diferencaCampos * 6, widthPadraoLabel, 25);
 		getContentPane().add(lblCidade);
-		
+
 		cbxCidades = new JComboBox();
-		cbxCidades.setBounds(200, diferencaCampos * 6,245,25);	
+		cbxCidades.setBounds(200, diferencaCampos * 6, 245, 25);
 		cbxCidades.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				if (cbxCidades.getItemCount() == 0) return;
-				
+
+				if (cbxCidades.getItemCount() == 0)
+					return;
+
 				Cidades cidade = (Cidades) cbxCidades.getSelectedItem();
-				txfPais.setText(cidade.getPais()); 
-				
+				txfPais.setText(cidade.getPais());
+
 			}
 		});
 		getContentPane().add(cbxCidades);
-		
-		//País
+
+		// País
 		lblPais = new JLabel("País:", JLabel.RIGHT);
-		lblPais.setBounds(xPadraoLabel, diferencaCampos * 7,widthPadraoLabel, 25);
+		lblPais.setBounds(xPadraoLabel, diferencaCampos * 7, widthPadraoLabel, 25);
 		getContentPane().add(lblPais);
-				
+
 		txfPais = new JTextField();
 		txfPais.setEditable(false);
-		txfPais.setBounds(xPadraoCampo, diferencaCampos * 7,350,25);
+		txfPais.setBounds(xPadraoCampo, diferencaCampos * 7, 350, 25);
 		getContentPane().add(txfPais);
-		
-		//CEP
+
+		// CEP
 		lblCEP = new JLabel("CEP:", JLabel.RIGHT);
-		lblCEP.setBounds(xPadraoLabel, diferencaCampos * 8,widthPadraoLabel, 25);
+		lblCEP.setBounds(xPadraoLabel, diferencaCampos * 8, widthPadraoLabel, 25);
 		getContentPane().add(lblCEP);
-				
+
 		try {
-			txfCEP = new  JFormattedTextField(maskFormatter("#####-###"));
-			txfCEP.setBounds(xPadraoCampo, diferencaCampos * 8,150,25);
+			txfCEP = new JFormattedTextField(maskFormatter("#####-###"));
+			txfCEP.setBounds(xPadraoCampo, diferencaCampos * 8, 150, 25);
 			getContentPane().add(txfCEP);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//bairro
+		// bairro
 		lblBairro = new JLabel("Bairro:");
-		lblBairro.setBounds(250, diferencaCampos * 8,150,25);
+		lblBairro.setBounds(250, diferencaCampos * 8, 150, 25);
 		getContentPane().add(lblBairro);
-				
+
 		txfBairro = new JTextField();
-		txfBairro.setBounds(295, diferencaCampos * 8,150,25);
+		txfBairro.setBounds(295, diferencaCampos * 8, 150, 25);
 		getContentPane().add(txfBairro);
-						
-		//Telefone
+
+		// Telefone
 		lblTelefone = new JLabel("Telefone:", JLabel.RIGHT);
-		lblTelefone.setBounds(xPadraoLabel, diferencaCampos * 9,widthPadraoLabel, 25);
+		lblTelefone.setBounds(xPadraoLabel, diferencaCampos * 9, widthPadraoLabel, 25);
 		getContentPane().add(lblTelefone);
-						
+
 		try {
-			txfTelefone = new  JFormattedTextField(maskFormatter("## ####-####"));
-			txfTelefone.setBounds(xPadraoCampo, diferencaCampos * 9,150,25);
+			txfTelefone = new JFormattedTextField(maskFormatter("## ####-####"));
+			txfTelefone.setBounds(xPadraoCampo, diferencaCampos * 9, 150, 25);
 			getContentPane().add(txfTelefone);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//Celular
+		// Celular
 		lblCelular = new JLabel("Celular:");
-		lblCelular.setBounds(250, diferencaCampos * 9,150,25);
+		lblCelular.setBounds(250, diferencaCampos * 9, 150, 25);
 		getContentPane().add(lblCelular);
-						
+
 		try {
-			txfCelular = new  JFormattedTextField(maskFormatter("## # ####-####"));
-			txfCelular.setBounds(300, diferencaCampos * 9,145,25);
+			txfCelular = new JFormattedTextField(maskFormatter("## # ####-####"));
+			txfCelular.setBounds(300, diferencaCampos * 9, 145, 25);
 			getContentPane().add(txfCelular);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//Email
+		// Email
 		lblEmail = new JLabel("Email:", JLabel.RIGHT);
 		lblEmail.setBounds(xPadraoLabel, diferencaCampos * 10, widthPadraoLabel, 25);
 		getContentPane().add(lblEmail);
-								
+
 		txfEmail = new JTextField();
-		txfEmail.setBounds(xPadraoCampo, diferencaCampos * 10, 350,25);
+		txfEmail.setBounds(xPadraoCampo, diferencaCampos * 10, 350, 25);
 		getContentPane().add(txfEmail);
 
-		//Observacao
+		// Observacao
 		lblObservacao = new JLabel("Observação:", JLabel.RIGHT);
-		lblObservacao.setBounds(xPadraoLabel, diferencaCampos * 11,widthPadraoLabel, 25);
+		lblObservacao.setBounds(xPadraoLabel, diferencaCampos * 11, widthPadraoLabel, 25);
 		getContentPane().add(lblObservacao);
-								
+
 		txfObservacao = new JTextArea();
-		txfObservacao.setBounds(xPadraoCampo, diferencaCampos * 11,350,115);
+		txfObservacao.setBounds(xPadraoCampo, diferencaCampos * 11, 350, 115);
 		txfObservacao.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		getContentPane().add(txfObservacao);
-		//button
+		// button
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(xPadraoCampo, (diferencaCampos * 15) + 5, 113, 25);
 		btnSalvar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				salvar();
-				
+
 			}
 
-			
 		});
-		getContentPane().add(btnSalvar);		
-		
+		getContentPane().add(btnSalvar);
+
 		btnConsultar = new JButton("Consultar");
 		btnConsultar.setBounds(xPadraoCampo + 118, (diferencaCampos * 15) + 5, 113, 25);
 		btnConsultar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				consultar();
-				
+
 			}
 
-			
 		});
-		getContentPane().add(btnConsultar);		
-		
+		getContentPane().add(btnConsultar);
+
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(xPadraoCampo + 236, (diferencaCampos * 15) + 5, 114, 25);
 		btnExcluir.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				excluir();
-				
+
 			}
 
-			
 		});
-		getContentPane().add(btnExcluir);	
-		
+		getContentPane().add(btnExcluir);
+
 		painel1 = new JPanel();
 		painel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		painel1.setBounds(0, 0, 500, 600	);
+		painel1.setBounds(0, 0, 500, 600);
 		painel1.setBackground(Color.decode("#DEDEDE"));
 		getContentPane().add(painel1);
-		
+
 		zerarVariaveis();
 
 	}
-	
 
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
 		for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -388,21 +384,21 @@ public class AlunoWindow extends JInternalFrame {
 		return null;
 
 	}
-	
+
 	private void popularComboBox() {
 
 		cidades = new CidadesDAO().consultar(cbxUF.getSelectedItem().toString());
 		cbxCidades.removeAllItems();
-		
+
 		for (Cidades cidade : cidades) {
 			cbxCidades.addItem(cidade);
 		}
 	}
-	
+
 	private void zerarVariaveis() {
 		txfNomeAluno.setText("");
-	    txfCode.setText("");
-        txfDataNasc.setText("");
+		txfCode.setText("");
+		txfDataNasc.setText("");
 		txfEndereco.setText("");
 		txfNumeroCasa.setText("");
 		txfComplemento.setText("");
@@ -413,24 +409,24 @@ public class AlunoWindow extends JInternalFrame {
 		txfCelular.setText("");
 		txfEmail.setText("");
 		txfObservacao.setText("");
-		
+
 		rbtMasculino.setSelected(true);
-		
+
 		txfNomeAluno.requestFocus();
-		
+
 		if (Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			btnExcluir.setEnabled(false);
 			btnSalvar.setEnabled(false);
 		}
-		
+
 		popularComboBox();
 	}
-	
+
 	private void habilitarCampos(Boolean habilitar) {
-		
-	    txfCode.setEnabled(!habilitar);
+
+		txfCode.setEnabled(!habilitar);
 		txfNomeAluno.setEnabled(habilitar);
-        txfDataNasc.setEnabled(habilitar);
+		txfDataNasc.setEnabled(habilitar);
 		txfEndereco.setEnabled(habilitar);
 		txfNumeroCasa.setEnabled(habilitar);
 		txfComplemento.setEnabled(habilitar);
@@ -446,40 +442,40 @@ public class AlunoWindow extends JInternalFrame {
 		btnSalvar.setEnabled(habilitar);
 		rbtFeminino.setEnabled(habilitar);
 		rbtMasculino.setEnabled(habilitar);
-		
+
 		if (Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			btnExcluir.setEnabled(false);
 			btnSalvar.setEnabled(false);
 		}
-		
+
 	}
-	
+
 	private void salvar() {
-		
+
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataNascimento = null;
 		try {
 			if (!txfDataNasc.getText().equals("")) {
-			    dataNascimento = (Date)formatter.parse(txfDataNasc.getText());
+				dataNascimento = (Date) formatter.parse(txfDataNasc.getText());
 			}
 		} catch (ParseException e) {
 			JOptionPane.showMessageDialog(null, "Formato da data inválido.\ndd/MM/yyyy");
 			return;
 		}
-		
+
 		AlunosDAO alunosDAO = new AlunosDAO();
 		Alunos alunos = new Alunos();
-		
+
 		try {
 			alunos.setCdAluno(Integer.parseInt(txfCode.getText()));
 		} catch (Exception e) {
 		}
-		
+
 		if (txfNomeAluno.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Informe o nome do aluno");
 			return;
 		}
-		
+
 		alunos.setAluno(txfNomeAluno.getText());
 		alunos.setBairro(txfBairro.getText());
 		alunos.setCelular(txfCelular.getText());
@@ -491,49 +487,49 @@ public class AlunoWindow extends JInternalFrame {
 		alunos.setNumero(txfNumeroCasa.getText());
 		alunos.setObservacao(txfObservacao.getText());
 		alunos.setTelefone(txfTelefone.getText());
-		alunos.setCidade((Cidades)cbxCidades.getSelectedItem());
-				
+		alunos.setCidade((Cidades) cbxCidades.getSelectedItem());
+
 		if (rbtMasculino.isSelected()) {
 			alunos.setSexo("M");
 		} else {
 			alunos.setSexo("F");
 		}
-		
+
 		if (alunosDAO.salvar(alunos)) {
 			txfCode.setText(alunos.getCdAluno().toString());
 			JOptionPane.showMessageDialog(null, "Operação realizada");
 			zerarVariaveis();
 		}
-		
+
 	}
-	
+
 	private void consultar() {
-		
+
 		if (consultar) {
-			
+
 			if (!txfCode.getText().equals("")) {
-				
+
 				try {
-					
+
 					Alunos aluno = new Alunos();
-					
+
 					aluno.setCdAluno(Integer.parseInt(txfCode.getText()));
-					
+
 					aluno = new AlunosDAO().consultar(aluno);
-					
+
 					if (aluno != null) {
 						popularCampos(aluno);
 					} else {
 						JOptionPane.showMessageDialog(null, "Registro não encontrado");
 						zerarVariaveis();
 					}
-					
+
 				} catch (Exception e) {
 
 					zerarVariaveis();
 				}
 			}
-			
+
 			habilitarCampos(true);
 			consultar = false;
 		} else {
@@ -542,11 +538,11 @@ public class AlunoWindow extends JInternalFrame {
 			consultar = true;
 			txfCode.requestFocus();
 		}
-		
+
 	}
-	
+
 	private void popularCampos(Alunos aluno) {
-		
+
 		txfCode.setText(aluno.getCdAluno().toString());
 		txfNomeAluno.setText(aluno.getAluno());
 		txfBairro.setText(aluno.getBairro());
@@ -566,34 +562,32 @@ public class AlunoWindow extends JInternalFrame {
 		cbxCidades.setSelectedItem(aluno.getCidade());
 
 		rbtFeminino.setSelected(true);
-		
+
 		if ("M".equals(aluno.getSexo())) {
 			rbtMasculino.setSelected(true);
 		}
-		
+
 		txfNomeAluno.requestFocus();
-		
-		
+
 	}
-	
+
 	private void excluir() {
 		try {
 			Alunos aluno = new Alunos();
-			
+
 			aluno.setCdAluno(Integer.parseInt(txfCode.getText()));
-			
+
 			new AlunosDAO().excluir(aluno);
-			
+
 			habilitarCampos(true);
 			zerarVariaveis();
 
 			JOptionPane.showMessageDialog(null, "Operação realizada");
-			
+
 			txfNomeAluno.requestFocus();
-			
+
 		} catch (Exception e) {
 		}
 	}
-	
 
 }

@@ -3,8 +3,10 @@ package database.dao;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import database.model.Alunos;
+import database.model.Usuarios;
 import generic.DaoGeneric;
 import lib.ArquivoManipular;
 
@@ -63,6 +65,18 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 	public Alunos consultar(Alunos modelo) {
 		return existe(modelo);
 	}
+	public List<Alunos> consultar(Integer CdAluno){
+		//	usuario -> usuario.getUsuario().equals(nmUsuario)
+			
+			return (List<Alunos>) getLista().stream().filter(aluno -> aluno.getCdAluno().equals(CdAluno)).collect(Collectors.toList());
+			
+		}
+		public List<Alunos> consultar(String nmAluno){
+			//	usuario -> usuario.getUsuario().equals(nmUsuario)
+				
+				return (List<Alunos>) getLista().stream().filter(aluno -> aluno.getAluno().toLowerCase().contains(nmAluno.toLowerCase())).collect(Collectors.toList());
+				
+			}
 
 	@Override
 	public List<Alunos> consultar(boolean novo) {
