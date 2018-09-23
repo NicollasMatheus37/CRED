@@ -28,6 +28,8 @@ public class PrincipalWindow extends JFrame {
 	JMenuItem itemBuscaAluno;
 	JMenuItem itemCadastroUsuario;
 	JMenuItem itemBuscaUsuario;
+	JMenuItem itemCadastroDisciplina;
+	JMenuItem itemCadastroProfessores;
 	JLabel lbUsuarioHora;
 
 	public PrincipalWindow() {
@@ -143,7 +145,37 @@ public class PrincipalWindow extends JFrame {
 		});
 
 		menuCadastro.add(itemCadastroAluno);
+		
+		itemCadastroDisciplina = new JMenuItem("Disciplina");
+		
+		itemCadastroDisciplina.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CadastroDisciplinaWindow disciplina = new CadastroDisciplinaWindow();
+				disciplina.setLocation(1, 1);
+				desktopPane.add(disciplina);
+				disciplina.setVisible(true);
+
+			}
+		});
+		menuCadastro.add(itemCadastroDisciplina);
+		
+		
+		itemCadastroProfessores = new JMenuItem("Professores");
+		itemCadastroProfessores.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CadastroProfessoresWindow professores = new CadastroProfessoresWindow();
+				professores.setLocation(1, 1);
+				desktopPane.add(professores);
+				professores.setVisible(true);
+
+			}
+		});
+		menuCadastro.add(itemCadastroProfessores);
+		
 		itemCadastroUsuario = new JMenuItem("Usuário");
 		itemCadastroUsuario.addActionListener(new ActionListener() {
 
@@ -156,6 +188,9 @@ public class PrincipalWindow extends JFrame {
 
 			}
 		});
+		
+//		itemCadastroDisciplina = new JMenuItem("Disciplina");
+		
 
 		if (!Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
 			menuCadastro.add(itemCadastroUsuario);
@@ -173,6 +208,7 @@ public class PrincipalWindow extends JFrame {
 
 			}
 		});
+		
 
 		itemBuscaUsuario = new JMenuItem("Usuário");
 		itemBuscaUsuario.addActionListener(new ActionListener() {
