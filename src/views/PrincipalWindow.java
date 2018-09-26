@@ -30,6 +30,7 @@ public class PrincipalWindow extends JFrame {
 	JMenuItem itemBuscaUsuario;
 	JMenuItem itemCadastroDisciplina;
 	JMenuItem itemCadastroProfessores;
+	JMenuItem itemCadastroFase;
 	JLabel lbUsuarioHora;
 
 	public PrincipalWindow() {
@@ -145,6 +146,21 @@ public class PrincipalWindow extends JFrame {
 		});
 
 		menuCadastro.add(itemCadastroAluno);
+		
+		
+		itemCadastroFase = new JMenuItem("Fase");
+		itemCadastroFase.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CadastroFaseWindow fase = new CadastroFaseWindow();
+				fase.setLocation(1, 1);
+				desktopPane.add(fase);
+				fase.setVisible(true);
+
+			}
+		});
+		menuCadastro.add(itemCadastroFase);
 		
 		itemCadastroDisciplina = new JMenuItem("Disciplina");
 		
