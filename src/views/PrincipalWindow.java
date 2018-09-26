@@ -181,10 +181,7 @@ public class PrincipalWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UsuarioWindow usu = new UsuarioWindow();
-				usu.setLocation(1, 1);
-				desktopPane.add(usu);
-				usu.setVisible(true);
+				abrirCadastroUsuario();
 
 			}
 		});
@@ -201,10 +198,7 @@ public class PrincipalWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BuscaAlunoWindow usu = new BuscaAlunoWindow();
-				usu.setLocation(1, 1);
-				desktopPane.add(usu);
-				usu.setVisible(true);
+				abrirBuscaAluno();
 
 			}
 		});
@@ -215,16 +209,15 @@ public class PrincipalWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BuscaUsuariosWindow usu = new BuscaUsuariosWindow();
-				usu.setLocation(1, 1);
-				desktopPane.add(usu);
-				usu.setVisible(true);
-
+				abrirBuscaUsuario();
 			}
 		});
 
 		menuBusca.add(itemBuscaAluno);
-		menuBusca.add(itemBuscaUsuario);
+		if (!Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
+			menuBusca.add(itemBuscaUsuario);
+		}
+		
 
 		menuBar.add(menuCadastro);
 		menuBar.add(menuBusca);
@@ -234,5 +227,42 @@ public class PrincipalWindow extends JFrame {
 		add(desktopPane);
 
 	}
-
+	
+	public void abrirBuscaUsuario() {
+		BuscaUsuariosWindow usu = new BuscaUsuariosWindow(this);
+		usu.setLocation(1, 1);
+		desktopPane.add(usu);
+		usu.setVisible(true);
+	}
+	
+	public UsuarioWindow abrirCadastroUsuario() {
+//		if (!Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
+			UsuarioWindow usu = new UsuarioWindow();
+			usu.setLocation(1, 1);
+			desktopPane.add(usu);
+			usu.setVisible(true);
+			return usu;
+//		}
+//	
+//		return null;
+	}
+	
+	public void abrirBuscaAluno() {
+		BuscaAlunoWindow al = new BuscaAlunoWindow(this);
+		al.setLocation(1, 1);
+		desktopPane.add(al);
+		al.setVisible(true);
+	}
+	
+	public AlunoWindow abrirCadastroAluno() {
+//		if (!Usuarios.getUsuarioLogin().getPerfil().equals("Convidado")) {
+			AlunoWindow al = new AlunoWindow();
+			al.setLocation(1, 1);
+			desktopPane.add(al);
+			al.setVisible(true);
+			return al;
+//		}
+//	
+//		return null;
+	}
 }

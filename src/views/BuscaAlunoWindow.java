@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +33,10 @@ import TableModel.UsuarioTableModel;
 import database.dao.AlunosDAO;
 import database.dao.UsuariosDAO;
 import database.model.Alunos;
+import generic.BuscaWindowGeneric;
 import lib.ArquivoManipular;
 
-public class BuscaAlunoWindow extends JInternalFrame {
+public class BuscaAlunoWindow extends BuscaWindowGeneric {
 
 	// componentes
 	private JTextField txfBuscar;
@@ -44,10 +47,11 @@ public class BuscaAlunoWindow extends JInternalFrame {
 	private String[] buscar = { "Código", "Nome" };
 	private AlunoTableModel model;
 	private JComboBox comboBusca;
+	private String idSelecionado;
 	ArquivoManipular am = new ArquivoManipular();
 
-	public BuscaAlunoWindow() {
-
+	public BuscaAlunoWindow(PrincipalWindow principal) {
+		super(principal);
 		setSize(860, 550);
 
 		setTitle("Tela Busca de Alunos");
@@ -173,20 +177,29 @@ public class BuscaAlunoWindow extends JInternalFrame {
 			public void valueChanged(ListSelectionEvent event) {
 
 				if (tabela.getSelectedRow() != -1) {
-					String idSelecionado = tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
+					idSelecionado = tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
 				}
 			}
 		});
+		
+		tabela.addMouseListener(new MouseAdapter(){
+		     public void mouseClicked(MouseEvent e){
+		         if (e.getClickCount() == 2){
+		            System.out.println(" double click" );
+		           	AlunoWindow usu = principal.abrirCadastroAluno();
+		            
+		            usu.consultar();
+		            usu.getTxfCode().setText(idSelecionado);
+		            usu.consultar();
+		            
+		            }
+		         }
+		        } );
 
 		mostrarTodos();
 
 	}
 
-	public static void main(String[] args) {
-
-		new BuscaAlunoWindow().setVisible(true);
-
-	}
 
 	public void mostrarTodos() {
 		try {

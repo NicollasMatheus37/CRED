@@ -503,7 +503,7 @@ public class AlunoWindow extends JInternalFrame {
 
 	}
 
-	private void consultar() {
+	public void consultar() {
 
 		if (consultar) {
 
@@ -588,6 +588,13 @@ public class AlunoWindow extends JInternalFrame {
 
 		} catch (Exception e) {
 		}
+	}
+	public JTextField getTxfCode() {
+		return txfCode;
+	}
+
+	public void setTxfCode(JTextField txfCode) {
+		this.txfCode = txfCode;
 	}
 
 }
