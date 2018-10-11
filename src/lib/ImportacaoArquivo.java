@@ -120,13 +120,25 @@ public class ImportacaoArquivo {
 				break;
 			}
 		}
-		
+
 		file.close();
 
 		arquivo.setResumos(resumos);
 
 		return arquivo;
 
+	}
+
+	public boolean validarArquivo(Arquivo arquivo) {
+
+		final int qtRegistro[] = new int[] {0};
+
+		arquivo.getResumos().forEach(resumos -> resumos.getDisciplinas()
+				.forEach(disciplinas -> disciplinas.getProfessores().forEach(professores -> qtRegistro[0]++)));
+		
+		if (qtRegistro[0] != arquivo.getTrailer().getTotalRegistro()) return false;
+
+		return true;
 	}
 
 }
