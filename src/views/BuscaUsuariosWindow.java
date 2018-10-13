@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +35,10 @@ import TableModel.UsuarioTableModel;
 import database.dao.UsuariosDAO;
 import database.model.Alunos;
 import database.model.Usuarios;
+import generic.BuscaWindowGeneric;
 import lib.ArquivoManipular;
 
-public class BuscaUsuariosWindow extends JInternalFrame {
+public class BuscaUsuariosWindow extends BuscaWindowGeneric {
 
 	// componentes
 	private JTextField txfBuscar;
@@ -46,11 +49,12 @@ public class BuscaUsuariosWindow extends JInternalFrame {
 	private UsuarioTableModel model;
 	private String[] buscar = { "Código", "Usuário" };
 	private JComboBox comboBusca;
-
+    private String idSelecionado;
+	
 	ArquivoManipular am = new ArquivoManipular();
 
-	public BuscaUsuariosWindow() {
-
+	public BuscaUsuariosWindow(PrincipalWindow principal) {
+		super(principal);
 		setSize(860, 550);
 
 		setTitle("Tela Busca de Usuários");
@@ -175,18 +179,26 @@ public class BuscaUsuariosWindow extends JInternalFrame {
 			public void valueChanged(ListSelectionEvent event) {
 
 				if (tabela.getSelectedRow() != -1) {
-					String idSelecionado = tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
+					idSelecionado = tabela.getValueAt(tabela.getSelectedRow(), 0).toString();
 				}
 			}
 		});
+		tabela.addMouseListener(new MouseAdapter(){
+		     public void mouseClicked(MouseEvent e){
+		         if (e.getClickCount() == 2){
+		            System.out.println(" double click" );
+		            UsuarioWindow usu = principal.abrirCadastroUsuario();
+		            
+		            usu.consultar();
+		            usu.getTxfCode().setText(idSelecionado);
+		            usu.consultar();
+		            
+		            }
+		         }
+		        } );
+		      
 
 		mostrarTodos();
-
-	}
-
-	public static void main(String[] args) {
-
-		new BuscaUsuariosWindow().setVisible(true);
 
 	}
 

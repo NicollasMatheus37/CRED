@@ -19,15 +19,15 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 
 	@Override
 	public boolean salvar(Alunos modelo) {
-		
+
 		Alunos aluno = existe(modelo);
-		
+
 		if (aluno == null) {
-			
+
 			lista.add(modelo);
-			
+
 		} else {
-			
+
 			aluno.setAluno(modelo.getAluno());
 			aluno.setBairro(modelo.getBairro());
 			aluno.setCelular(modelo.getCelular());
@@ -43,21 +43,21 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 			aluno.setSexo(modelo.getSexo());
 			aluno.setTelefone(modelo.getTelefone());
 		}
-		
-		
+
 		return salvar();
-		
+
 	}
 
 	@Override
 	public boolean excluir(Alunos modelo) {
 
 		Alunos Aluno = existe(modelo);
-		
-		if (Aluno == null) return true;
-		
+
+		if (Aluno == null)
+			return true;
+
 		getLista().remove(Aluno);
-		
+
 		return salvar();
 	}
 
@@ -65,18 +65,23 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 	public Alunos consultar(Alunos modelo) {
 		return existe(modelo);
 	}
-	public List<Alunos> consultar(Integer CdAluno){
-		//	usuario -> usuario.getUsuario().equals(nmUsuario)
-			
-			return (List<Alunos>) getLista().stream().filter(aluno -> aluno.getCdAluno().equals(CdAluno)).collect(Collectors.toList());
-			
-		}
-		public List<Alunos> consultar(String nmAluno){
-			//	usuario -> usuario.getUsuario().equals(nmUsuario)
-				
-				return (List<Alunos>) getLista().stream().filter(aluno -> aluno.getAluno().toLowerCase().contains(nmAluno.toLowerCase())).collect(Collectors.toList());
-				
-			}
+
+	public List<Alunos> consultar(Integer CdAluno) {
+		// usuario -> usuario.getUsuario().equals(nmUsuario)
+
+		return (List<Alunos>) getLista().stream().filter(aluno -> aluno.getCdAluno().equals(CdAluno))
+				.collect(Collectors.toList());
+
+	}
+
+	public List<Alunos> consultar(String nmAluno) {
+		// usuario -> usuario.getUsuario().equals(nmUsuario)
+
+		return (List<Alunos>) getLista().stream()
+				.filter(aluno -> aluno.getAluno().toLowerCase().contains(nmAluno.toLowerCase()))
+				.collect(Collectors.toList());
+
+	}
 
 	@Override
 	public List<Alunos> consultar(boolean novo) {
@@ -99,15 +104,17 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 	@Override
 	protected void setLista() {
 		lista = (List<Alunos>) ArquivoManipular.lerArquivoSerializado(getArquivo());
-		
-		if (lista == null) lista = new ArrayList();
+
+		if (lista == null)
+			lista = new ArrayList();
 	}
 
 	@Override
 	public Alunos existe(Alunos modelo) {
-		
-		if (getLista() == null || getLista().isEmpty()) return null;
-		
+
+		if (getLista() == null || getLista().isEmpty())
+			return null;
+
 		for (Alunos aluno : getLista()) {
 			if (modelo.getCdAluno().equals(aluno.getCdAluno())) {
 				return aluno;
@@ -124,8 +131,8 @@ public class AlunosDAO extends DaoGeneric<Alunos> {
 
 	@Override
 	public Integer getMax() {
-		return lista.isEmpty() ? 1 : lista.stream().max(Comparator.comparing(Alunos::getCdAluno)).get().getCdAluno() + 1;
+		return lista.isEmpty() ? 1
+				: lista.stream().max(Comparator.comparing(Alunos::getCdAluno)).get().getCdAluno() + 1;
 	}
-
 
 }
