@@ -1,12 +1,11 @@
-package views;
+package hashmap;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Teste {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+public class HashMaps {
+	
+	public  HashMaps(){
 		Map<String, String> mapDisciplinas = new HashMap<String, String>(); 
 	    mapDisciplinas.put("10850", "Algoritmos");
 	    mapDisciplinas.put("10851", "Introdução a Ciência da Computação");
@@ -69,15 +68,21 @@ public class Teste {
 	    mapQualificao.put("02", "Mestrado");
 	    mapQualificao.put("03", "Doutorado");
 	    mapQualificao.put("04", "Pós-Doutorado");
-
-	    
-	    
-	//System.out.println(mapDisciplinas);
-	     
-	    //resgatando o nome da posição 2
-	    System.out.println(mapDisciplinas.get("10873"));
-	    System.out.println(mapDiasSemana.get("03"));
-	    System.out.println(mapQualificao.get("04"));
 	}
+	
+
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		
+//
+//	    
+//	    
+//	//System.out.println(mapDisciplinas);
+//	     
+//	    //resgatando o nome da posição 2
+//	    System.out.println(mapDisciplinas.get("10873"));
+//	    System.out.println(mapDiasSemana.get("03"));
+//	    System.out.println(mapQualificao.get("04"));
+//	}
 
 }
