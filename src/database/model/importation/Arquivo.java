@@ -3,14 +3,14 @@ package database.model.importation;
 import java.util.List;
 
 public class Arquivo {
-	private Header header;
+	private List<Header> header;
 	private List<ResumoOperacao> resumos;
-	private Trailer trailer;
+	private List<Trailer> trailer;
 	
-	public Header getHeader() {
+	public List<Header> getHeader() {
 		return header;
 	}
-	public void setHeader(Header header) {
+	public void setHeader(List<Header> header) {
 		this.header = header;
 	}
 	public List<ResumoOperacao> getResumos() {
@@ -19,10 +19,10 @@ public class Arquivo {
 	public void setResumos(List<ResumoOperacao> resumos) {
 		this.resumos = resumos;
 	}
-	public Trailer getTrailer() {
+	public List<Trailer> getTrailer() {
 		return trailer;
 	}
-	public void setTrailer(Trailer trailer) {
+	public void setTrailer(List<Trailer> trailer) {
 		this.trailer = trailer;
 	}
 	

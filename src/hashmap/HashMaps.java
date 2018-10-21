@@ -5,8 +5,12 @@ import java.util.Map;
 
 public class HashMaps {
 	
+	private Map<String, String> mapDisciplinas;
+	private Map<String, String> mapDiasSemana;
+	private Map<String, String> mapQualificao;
+	
 	public  HashMaps(){
-		Map<String, String> mapDisciplinas = new HashMap<String, String>(); 
+	    mapDisciplinas = new HashMap<String, String>(); 
 	    mapDisciplinas.put("10850", "Algoritmos");
 	    mapDisciplinas.put("10851", "Introdução a Ciência da Computação");
 	    mapDisciplinas.put("10854", "Fundamentos Matemáticos para Computação");
@@ -54,7 +58,7 @@ public class HashMaps {
 	    mapDisciplinas.put("10893", "Tópicos Especiais III");
 	    mapDisciplinas.put("10894", "Trabalho de Conclusão de Curso - TCC III");
 	   
-	    Map<String, String> mapDiasSemana = new HashMap<String, String>(); 
+	    mapDiasSemana = new HashMap<String, String>(); 
 	    mapDiasSemana.put("01", "Domingo");
 	    mapDiasSemana.put("02", "Segunda-Feira");
 	    mapDiasSemana.put("03", "Terça-Feira");
@@ -63,26 +67,23 @@ public class HashMaps {
 	    mapDiasSemana.put("06", "Sexta-Feira");
 	    mapDiasSemana.put("07", "Sabado");
 	    
-	    Map<String, String> mapQualificao = new HashMap<String, String>(); 
+	    mapQualificao = new HashMap<String, String>(); 
 	    mapQualificao.put("01", "Pós-Graduação");
 	    mapQualificao.put("02", "Mestrado");
 	    mapQualificao.put("03", "Doutorado");
 	    mapQualificao.put("04", "Pós-Doutorado");
 	}
+
+	public Map<String, String> getMapDisciplinas() {
+		return mapDisciplinas;
+	}
+
+	public Map<String, String> getMapDiasSemana() {
+		return mapDiasSemana;
+	}
+
+	public Map<String, String> getMapQualificao() {
+		return mapQualificao;
+	}
 	
-
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		
-//
-//	    
-//	    
-//	//System.out.println(mapDisciplinas);
-//	     
-//	    //resgatando o nome da posição 2
-//	    System.out.println(mapDisciplinas.get("10873"));
-//	    System.out.println(mapDiasSemana.get("03"));
-//	    System.out.println(mapQualificao.get("04"));
-//	}
-
 }

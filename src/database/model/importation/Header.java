@@ -9,6 +9,7 @@ public class Header {
 	private String periodoFinal;
 	private int sequencia;
 	private String versaoLayout;
+	private transient int linha;
 	
 	public byte getTipoRegistro() {
 		return tipoRegistro;
@@ -51,6 +52,12 @@ public class Header {
 	}
 	public void setVersaoLayout(String versaoLayout) {
 		this.versaoLayout = versaoLayout;
+	}
+	public int getLinha() {
+		return linha;
+	}
+	public void setLinha(int linha) {
+		this.linha = linha;
 	}
 	
 	

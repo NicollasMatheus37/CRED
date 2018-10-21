@@ -5,6 +5,7 @@ public class ResumoProfessor {
 	private byte tipoRegistro;
 	private String nomeProfessor;
 	private int tituloDocente;
+	private transient int linha;
 	
 	public byte getTipoRegistro() {
 		return tipoRegistro;
@@ -28,6 +29,14 @@ public class ResumoProfessor {
 
 	public void setTituloDocente(int tituloDocente) {
 		this.tituloDocente = tituloDocente;
+	}
+
+	public int getLinha() {
+		return linha;
+	}
+
+	public void setLinha(int linha) {
+		this.linha = linha;
 	}
 
 }

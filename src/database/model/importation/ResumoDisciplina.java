@@ -10,6 +10,7 @@ public class ResumoDisciplina {
 	private int diaSemana;
 	private int quantidadeProfessor;
 	private List<ResumoProfessor> professores = new ArrayList<ResumoProfessor>();
+	private transient int linha;
 	
 	public byte getTipoRegistro() {
 		return tipoRegistro;
@@ -40,6 +41,12 @@ public class ResumoDisciplina {
 	}
 	public void setProfessores(List<ResumoProfessor> professores) {
 		this.professores = professores;
+	}
+	public int getLinha() {
+		return linha;
+	}
+	public void setLinha(int linha) {
+		this.linha = linha;
 	}
 	
 	
