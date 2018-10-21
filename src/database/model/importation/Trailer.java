@@ -2,14 +2,14 @@ package database.model.importation;
 
 public class Trailer {
 	
-	private byte tipoRegistro;
+	private int tipoRegistro;
 	private Integer totalRegistro;
 	private transient int linha;
 	
-	public byte getTipoRegistro() {
+	public int getTipoRegistro() {
 		return tipoRegistro;
 	}
-	public void setTipoRegistro(byte tipoRegistro) {
+	public void setTipoRegistro(int tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
 	public Integer getTotalRegistro() {

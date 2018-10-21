@@ -5,17 +5,17 @@ import java.util.List;
 
 public class ResumoOperacao {
 	
-	private byte tipoRegistro;
+	private int tipoRegistro;
 	private String fase;
 	private int quantidadeDisciplina;
 	private int quantidadeProfessor;
 	private List<ResumoDisciplina> disciplinas = new ArrayList<ResumoDisciplina>();
 	private transient int linha;
 	
-	public byte getTipoRegistro() {
+	public int getTipoRegistro() {
 		return tipoRegistro;
 	}
-	public void setTipoRegistro(byte tipoRegistro) {
+	public void setTipoRegistro(int tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
 	public String getFase() {

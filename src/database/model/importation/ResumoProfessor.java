@@ -2,16 +2,16 @@ package database.model.importation;
 
 public class ResumoProfessor {
 	
-	private byte tipoRegistro;
+	private int tipoRegistro;
 	private String nomeProfessor;
-	private int tituloDocente;
+	private String tituloDocente;
 	private transient int linha;
 	
-	public byte getTipoRegistro() {
+	public int getTipoRegistro() {
 		return tipoRegistro;
 	}
 
-	public void setTipoRegistro(byte tipoRegistro) {
+	public void setTipoRegistro(int tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
 
@@ -23,11 +23,11 @@ public class ResumoProfessor {
 		this.nomeProfessor = nomeProfessor;
 	}
 
-	public int getTituloDocente() {
+	public String getTituloDocente() {
 		return tituloDocente;
 	}
 
-	public void setTituloDocente(int tituloDocente) {
+	public void setTituloDocente(String tituloDocente) {
 		this.tituloDocente = tituloDocente;
 	}
 

@@ -2,7 +2,7 @@ package database.model.importation;
 
 public class Header {
 	
-	private byte tipoRegistro;
+	private int tipoRegistro;
 	private String curso;
 	private String dataProcessamento;
 	private String periodoInicial;
@@ -11,10 +11,10 @@ public class Header {
 	private String versaoLayout;
 	private transient int linha;
 	
-	public byte getTipoRegistro() {
+	public int getTipoRegistro() {
 		return tipoRegistro;
 	}
-	public void setTipoRegistro(byte tipoRegistro) {
+	public void setTipoRegistro(int tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
 	public String getCurso() {

@@ -1,14 +1,14 @@
 package TableModel;
 
-import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import database.model.*;
+import javax.swing.table.AbstractTableModel;
+
 import database.model.importation.ResumoDisciplina;
+import database.model.importation.ResumoOperacao;
 import hashmap.HashMaps;
 
 public class DisciplinaTableModel extends AbstractTableModel {
@@ -20,7 +20,7 @@ public class DisciplinaTableModel extends AbstractTableModel {
 	public DisciplinaTableModel(List<ResumoDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
-	public String mapDisciplinas(int num) {
+	public String mapDisciplinas(String num) {
 		String resultado = null;
 		Map<String, String> mapDisciplinas = new HashMap<String, String>(); 
 	    mapDisciplinas.put("10850", "Algoritmos");
@@ -73,7 +73,7 @@ public class DisciplinaTableModel extends AbstractTableModel {
 		
 		return resultado = mapDisciplinas.get(num);
 	}
-	public String mapDiaSemana(int num) {
+	public String mapDiaSemana(String num) {
 		String resultado = null;
 	   
 	    Map<String, String> mapDiasSemana = new HashMap<String, String>(); 
@@ -89,6 +89,9 @@ public class DisciplinaTableModel extends AbstractTableModel {
 		return resultado = mapDiasSemana.get(num);
 	}
 
+	public ResumoDisciplina getObjectAt(int rowIndex) {
+		return disciplinas.get(rowIndex);
+	}
 	
 	public DisciplinaTableModel() {
 		this.disciplinas = new ArrayList<ResumoDisciplina>();
@@ -131,9 +134,9 @@ public class DisciplinaTableModel extends AbstractTableModel {
 		case 0:
 			disciplina.setCodigoDisciplina((aValue.toString()));
 		case 1:
-			disciplina.setDiaSemana(Integer.parseInt(aValue.toString()));
+			disciplina.setDiaSemana(aValue.toString());
 		case 2:
-			disciplina.setQuantidadeProfessor(Integer.parseInt(aValue.toString()));
+			disciplina.setQuantidadeProfessor(aValue.toString());
 		default:
 			System.err.println("Índice da coluna inválido");
 		}
@@ -142,16 +145,17 @@ public class DisciplinaTableModel extends AbstractTableModel {
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		ResumoDisciplina disciplinaSelecionado = disciplinas.get(rowIndex);
+		HashMaps hm = new HashMaps();
 		String valueObject = null;
 		switch (columnIndex) {
 		case 0:
-			valueObject = disciplinaSelecionado.getCodigoDisciplina();
+			valueObject = hm.getMapDisciplinas().get(String.valueOf(Integer.valueOf(disciplinaSelecionado.getCodigoDisciplina())));
 			break;
 		case 1:
-			valueObject = mapDiaSemana(disciplinaSelecionado.getDiaSemana());
+			valueObject = hm.getMapDiasSemana().get(disciplinaSelecionado.getDiaSemana());
 			break;
 		case 2:
-			valueObject = mapDisciplinas(disciplinaSelecionado.getQuantidadeProfessor());
+			valueObject = disciplinaSelecionado.getQuantidadeProfessor();
 			break;
 		default:
 			System.err.println("Índice inválido para propriedade do bean ResumoDisciplina.class");
@@ -170,6 +174,7 @@ public class DisciplinaTableModel extends AbstractTableModel {
 	}
 
 	public void addDisciplina(ResumoDisciplina u) {
+		
 		disciplinas.add(u);
 
 		int ultimoIndice = getRowCount() - 1;

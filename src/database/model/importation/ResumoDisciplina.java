@@ -5,17 +5,17 @@ import java.util.List;
 
 public class ResumoDisciplina {
 	
-	private byte tipoRegistro;
+	private int tipoRegistro;
 	private String codigoDisciplina;
-	private int diaSemana;
-	private int quantidadeProfessor;
+	private String diaSemana;
+	private String quantidadeProfessor;
 	private List<ResumoProfessor> professores = new ArrayList<ResumoProfessor>();
 	private transient int linha;
 	
-	public byte getTipoRegistro() {
+	public int getTipoRegistro() {
 		return tipoRegistro;
 	}
-	public void setTipoRegistro(byte tipoRegistro) {
+	public void setTipoRegistro(int tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
 	public String getCodigoDisciplina() {
@@ -24,16 +24,16 @@ public class ResumoDisciplina {
 	public void setCodigoDisciplina(String codigoDisciplina) {
 		this.codigoDisciplina = codigoDisciplina;
 	}
-	public int getDiaSemana() {
+	public String getDiaSemana() {
 		return diaSemana;
 	}
-	public void setDiaSemana(int diaSemana) {
+	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-	public int getQuantidadeProfessor() {
+	public String getQuantidadeProfessor() {
 		return quantidadeProfessor;
 	}
-	public void setQuantidadeProfessor(int quantidadeProfessor) {
+	public void setQuantidadeProfessor(String quantidadeProfessor) {
 		this.quantidadeProfessor = quantidadeProfessor;
 	}
 	public List<ResumoProfessor> getProfessores() {

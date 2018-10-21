@@ -49,6 +49,10 @@ public class OperacaoTableModel extends AbstractTableModel {
 		fireTableCellUpdated(rowIndex, 1);
 		fireTableCellUpdated(rowIndex, 2);
 	}
+	
+	public ResumoOperacao getObjectAt(int rowIndex) {
+		return operacoes.get(rowIndex);
+	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {

@@ -1,14 +1,14 @@
 package TableModel;
 
-import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import database.model.*;
+import javax.swing.table.AbstractTableModel;
+
 import database.model.importation.ResumoProfessor;
+import hashmap.HashMaps;
 
 public class ProfessorTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
@@ -16,7 +16,7 @@ public class ProfessorTableModel extends AbstractTableModel {
 	private List<ResumoProfessor> professores;
 	private String[] colunas = new String[] { "Nome", "Titulo Docente"};
 	
-	public String mapTituloDocente(int num) {
+	public String mapTituloDocente(String num) {
 		String resultado = null;
 	   
 		 Map<String, String> mapQualificao = new HashMap<String, String>(); 
@@ -27,6 +27,10 @@ public class ProfessorTableModel extends AbstractTableModel {
 		
 		
 		return resultado = mapQualificao.get(num);
+	}
+	
+	public ResumoProfessor getObjectAt(int rowIndex) {
+		return professores.get(rowIndex);
 	}
 
 	public ProfessorTableModel(List<ResumoProfessor> professores) {
@@ -72,7 +76,7 @@ public class ProfessorTableModel extends AbstractTableModel {
 		case 0:
 			operacao.setNomeProfessor(aValue.toString());
 		case 1:
-			operacao.setTituloDocente(Integer.parseInt(aValue.toString()));
+			operacao.setTituloDocente(aValue.toString());
 		default:
 			System.err.println("Índice da coluna inválido");
 		}
@@ -81,10 +85,13 @@ public class ProfessorTableModel extends AbstractTableModel {
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		ResumoProfessor operacaoSelecionado = professores.get(rowIndex);
+		HashMaps hm = new HashMaps();
+		
 		String valueObject = null;
+		
 		switch (columnIndex) {
 			case 0: valueObject = operacaoSelecionado.getNomeProfessor();break;
-			case 1:valueObject = mapTituloDocente(operacaoSelecionado.getTituloDocente());break;
+			case 1:valueObject = hm.getMapQualificao().get(operacaoSelecionado.getTituloDocente());break;
 			default: System.err.println("Índice inválido para propriedade do bean ResumoProfessor.class");
 		}
 
