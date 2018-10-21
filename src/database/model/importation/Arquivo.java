@@ -1,7 +1,7 @@
 package database.model.importation;
 
 import java.util.List;
-
+ 
 public class Arquivo {
 	private List<Header> header;
 	private List<ResumoOperacao> resumos;

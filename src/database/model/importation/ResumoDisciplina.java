@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResumoDisciplina {
-	
+	 
 	private int tipoRegistro;
 	private String codigoDisciplina;
 	private String diaSemana;

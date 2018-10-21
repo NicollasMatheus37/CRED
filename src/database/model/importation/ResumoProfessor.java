@@ -1,7 +1,7 @@
 package database.model.importation;
 
 public class ResumoProfessor {
-	
+	 
 	private int tipoRegistro;
 	private String nomeProfessor;
 	private String tituloDocente;

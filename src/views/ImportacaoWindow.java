@@ -290,7 +290,7 @@ public class ImportacaoWindow extends JInternalFrame {
 		arquivoImportado = new ImportacaoArquivo().lerArquivo("", caminho);
 
 		if (arquivoImportado == null)
-			return;
+			return; 
 
 		modelO.limpar();
 		modelD.limpar();

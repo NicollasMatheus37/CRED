@@ -1,7 +1,7 @@
 package database.model.importation;
 
 public class Trailer {
-	
+	 
 	private int tipoRegistro;
 	private Integer totalRegistro;
 	private transient int linha;

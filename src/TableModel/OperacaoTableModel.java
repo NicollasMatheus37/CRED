@@ -12,7 +12,7 @@ public class OperacaoTableModel extends AbstractTableModel {
 
 	private List<ResumoOperacao> operacoes;
 	private String[] colunas = new String[] { "Fase", "N° de Disciplinas", "N° de Professores"};
-
+ 
 	public OperacaoTableModel(List<ResumoOperacao> operacoes) {
 		this.operacoes = operacoes;
 	}

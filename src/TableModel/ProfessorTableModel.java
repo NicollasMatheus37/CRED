@@ -15,7 +15,7 @@ public class ProfessorTableModel extends AbstractTableModel {
 
 	private List<ResumoProfessor> professores;
 	private String[] colunas = new String[] { "Nome", "Titulo Docente"};
-	
+	 
 	public String mapTituloDocente(String num) {
 		String resultado = null;
 	   

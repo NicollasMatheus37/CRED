@@ -17,7 +17,7 @@ import hashmap.HashMaps;
 import util.FileUtil;
 
 public class ImportacaoArquivo {
-
+ 
 	private final static int HEADER = 0;
 	private final static int RESUMOOPERACAO = 1;
 	private final static int RESUMODISCIPLINA = 2;

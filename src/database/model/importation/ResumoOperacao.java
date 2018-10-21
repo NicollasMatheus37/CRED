@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResumoOperacao {
-	
+	 
 	private int tipoRegistro;
 	private String fase;
 	private int quantidadeDisciplina;

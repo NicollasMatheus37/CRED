@@ -1,7 +1,7 @@
 package database.model.importation;
 
 public class Header {
-	
+	 
 	private int tipoRegistro;
 	private String curso;
 	private String dataProcessamento;

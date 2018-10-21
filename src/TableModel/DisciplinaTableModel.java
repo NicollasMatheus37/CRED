@@ -16,7 +16,7 @@ public class DisciplinaTableModel extends AbstractTableModel {
 
 	private List<ResumoDisciplina> disciplinas;
 	private String[] colunas = new String[] { "Disciplina", "Dia da Semana", "N° de Professores",};
-
+ 
 	public DisciplinaTableModel(List<ResumoDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
