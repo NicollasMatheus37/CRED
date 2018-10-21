@@ -1,7 +1,8 @@
 package database.model.importation;
 
 public class Header {
-	 
+
+	//odeio essa merda de merge conflict
 	private int tipoRegistro;
 	private String curso;
 	private String dataProcessamento;

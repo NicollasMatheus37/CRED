@@ -30,6 +30,7 @@ import database.model.importation.ResumoProfessor;
 import hashmap.HashMaps;
 import lib.ImportacaoArquivo;
 
+//odeio essa merda de merge conflict
 public class ImportacaoWindow extends JInternalFrame {
 
 	private JLabel lblImportar;

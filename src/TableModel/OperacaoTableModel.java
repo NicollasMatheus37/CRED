@@ -7,6 +7,7 @@ import java.util.List;
 import database.model.*;
 import database.model.importation.ResumoOperacao;
 
+//odeio essa merda de merge conflict
 public class OperacaoTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
 

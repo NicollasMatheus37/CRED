@@ -1,7 +1,8 @@
 package database.model.importation;
 
 public class Trailer {
-	 
+
+	//odeio essa merda de merge conflict
 	private int tipoRegistro;
 	private Integer totalRegistro;
 	private transient int linha;

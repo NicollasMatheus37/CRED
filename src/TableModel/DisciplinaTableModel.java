@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import database.model.importation.ResumoDisciplina;
 import database.model.importation.ResumoOperacao;
 import hashmap.HashMaps;
-
+//odeio essa merda de merge conflict
 public class DisciplinaTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
 

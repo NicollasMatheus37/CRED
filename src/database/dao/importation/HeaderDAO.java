@@ -8,6 +8,7 @@ import database.model.importation.Header;
 import generic.DaoGeneric;
 import lib.ArquivoManipular;
 
+//odeio essa merda de merge conflict
 public class HeaderDAO extends DaoGeneric<Header> {
 
 	public HeaderDAO() {

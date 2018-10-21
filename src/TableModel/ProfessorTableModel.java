@@ -13,6 +13,7 @@ import hashmap.HashMaps;
 public class ProfessorTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
 
+	//odeio essa merda de merge conflict
 	private List<ResumoProfessor> professores;
 	private String[] colunas = new String[] { "Nome", "Titulo Docente"};
 	 
