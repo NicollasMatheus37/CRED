@@ -172,7 +172,7 @@ public class ImportacaoWindow extends JInternalFrame {
 		tblOperacao.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		barraRolagemOpe = new JScrollPane(tblOperacao);
 		painelFundoOpe.add(barraRolagemOpe);
-		painelFundoOpe.setBounds(25, 100, 400, 200);
+ 		painelFundoOpe.setBounds(25, 100, 400, 200);
 		getContentPane().add(painelFundoOpe);
 
 		tblOperacao.getSelectionModel().addListSelectionListener(new ListSelectionListener() {

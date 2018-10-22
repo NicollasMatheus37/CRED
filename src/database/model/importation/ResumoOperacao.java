@@ -28,7 +28,7 @@ public class ResumoOperacao {
 		return quantidadeDisciplina;
 	}
 	public void setQuantidadeDisciplina(int quantidadeDisciplina) {
-		this.quantidadeDisciplina = quantidadeDisciplina;
+	 	this.quantidadeDisciplina = quantidadeDisciplina;
 	}
 	public int getQuantidadeProfessor() {
 		return quantidadeProfessor;

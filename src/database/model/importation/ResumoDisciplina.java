@@ -26,7 +26,7 @@ public class ResumoDisciplina {
 	}
 	public String getDiaSemana() {
 		return diaSemana;
-	}
+	 }
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
 	}

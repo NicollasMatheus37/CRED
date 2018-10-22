@@ -10,7 +10,7 @@ import database.dao.importation.HeaderDAO;
 import database.model.importation.Arquivo;
 import database.model.importation.Header;
 import database.model.importation.ResumoDisciplina;
-import database.model.importation.ResumoOperacao;
+import  database.model.importation.ResumoOperacao;
 import database.model.importation.ResumoProfessor;
 import database.model.importation.Trailer;
 import hashmap.HashMaps;

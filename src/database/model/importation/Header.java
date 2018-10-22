@@ -21,7 +21,7 @@ public class Header {
 		return curso;
 	}
 	public void setCurso(String curso) {
-		this.curso = curso;
+ 		this.curso = curso;
 	}
 	public String getDataProcessamento() {
 		return dataProcessamento;
