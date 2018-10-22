@@ -21,6 +21,8 @@ public class CadastroCursoWindow extends JInternalFrame {
 	private JLabel lblName;
 	private JTextField txfName;
 	private JButton btnRegister;
+	private JButton btnConsultar;
+	private JButton btnExcluir;
 	
 	private final int widthPadraoLabel = 75;
 	private final int xPadraoLabel = 15;
@@ -65,7 +67,7 @@ public class CadastroCursoWindow extends JInternalFrame {
 		getContentPane().add(txfName);
 		
 		btnRegister = new JButton("Salvar");
-		btnRegister.setBounds(xPadraoCampo, (diferencaCampos * 3), 100, 25);
+		btnRegister.setBounds(xPadraoCampo, (diferencaCampos * 3), 115, 25);
 		btnRegister.addActionListener(new ActionListener() {
 			
 			@Override
@@ -74,8 +76,35 @@ public class CadastroCursoWindow extends JInternalFrame {
 				register();
 			}
 		});
+		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(xPadraoCampo+118, (diferencaCampos * 3), 114, 25);
+		btnConsultar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			
+			}
+		});
+		
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(xPadraoCampo+235, (diferencaCampos * 3), 115, 25);
+		btnExcluir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+			}
+		});
+		
+		
 		getContentPane().add(btnRegister);
+		getContentPane().add(btnConsultar);
+		getContentPane().add(btnExcluir);
 	}
+	
+	
 	
 	private void register() {
 		

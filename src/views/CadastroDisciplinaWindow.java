@@ -30,7 +30,9 @@ public class CadastroDisciplinaWindow extends JInternalFrame{
 	private JTextField txtCurso;
 	private JComboBox comboDia;
 	private JComboBox comboFase;
-	private JButton btnConcluir;
+	private JButton btnSalvar;
+	private JButton btnConsultar;
+	private JButton btnExcluir;
 	
 	MaskFormatter mask;
 	
@@ -42,7 +44,7 @@ public class CadastroDisciplinaWindow extends JInternalFrame{
 	
 	
 	public CadastroDisciplinaWindow() {
-		setSize(500, 230);
+		setSize(500, 215);
 		setTitle("Cadastro de Disciplina");
 		setLayout(null);
 		
@@ -133,10 +135,34 @@ public class CadastroDisciplinaWindow extends JInternalFrame{
 		getContentPane().add(comboFase);
 		
 //		=====================Buttons================================
-		btnConcluir = new JButton("Concluir");
-		btnConcluir.setBounds(100, 140, 250, 30);
-		getContentPane().add(btnConcluir);
-		btnConcluir.addActionListener(new ActionListener() {
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(80, 140, 110, 25);
+		getContentPane().add(btnSalvar);
+		btnSalvar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("teste");
+
+			}
+
+		});
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(195, 140, 120, 25);
+		getContentPane().add(btnConsultar);
+		btnConsultar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("teste");
+
+			}
+
+		});
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(320, 140, 110, 25);
+		getContentPane().add(btnExcluir);
+		btnExcluir.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

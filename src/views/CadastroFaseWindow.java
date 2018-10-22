@@ -17,8 +17,9 @@ public class CadastroFaseWindow extends JInternalFrame {
 	private JLabel lblCurso;
 	private JTextField txfFase;
 	private JComboBox comboCurso;
-	private JButton btnConcluir;
-	private JButton btnBuscar;
+	private JButton btnSalvar;
+	private JButton btnConsultar;
+	private JButton btnExcluir;
 	
 	MaskFormatter mask;
 	
@@ -49,19 +50,19 @@ public class CadastroFaseWindow extends JInternalFrame {
 		
 //	Label
 		lblCurso = new JLabel("Curso:");
-		lblCurso.setBounds(15, 10, 50, 25);
+		lblCurso.setBounds(10, 10, 50, 25);
 		getContentPane().add(lblCurso);
 		
 		
 		lblFase = new JLabel("Fase:");
-		lblFase.setBounds(180, 10, 50, 25);
+		lblFase.setBounds(175, 10, 50, 25);
 		getContentPane().add(lblFase);
 		
 		
 // 		TextFilds
 		
 		txfFase = new JTextField();
-		txfFase.setBounds(220, 10, 100, 25);
+		txfFase.setBounds(215, 10, 110, 25);
 		getContentPane().add(txfFase);
 		
 		
@@ -70,33 +71,45 @@ public class CadastroFaseWindow extends JInternalFrame {
 //		ComboBox
 		comboCurso = new JComboBox(Curso);
 		comboCurso.setSelectedIndex(0);
-		comboCurso.setBounds(60, 10, 100, 25);
+		comboCurso.setBounds(55, 10, 110, 25);
 		getContentPane().add(comboCurso);
 
 		
 //		Buttons
-		btnConcluir = new JButton("Concluir");
-		btnConcluir.setBounds(175, 45, 100, 30);
-		getContentPane().add(btnConcluir);
-		btnConcluir.addActionListener(new ActionListener() {
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(55, 45, 85, 25);
+		getContentPane().add(btnSalvar);
+		btnSalvar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vai Dar");
+				System.out.println("Salvando");
 
 			}
 
 		});
-		btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(70, 45, 100, 30);
-		getContentPane().add(btnBuscar);		
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(145, 45, 90, 25);
+		getContentPane().add(btnConsultar);		
 		
 		
-		btnBuscar.addActionListener(new ActionListener() {
+		btnConsultar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vai Dar :)");
+				System.out.println("Consultando :)");
+
+			}
+
+		});
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(240, 45, 85, 25);
+		getContentPane().add(btnExcluir);
+		btnExcluir.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Excluir");
 
 			}
 

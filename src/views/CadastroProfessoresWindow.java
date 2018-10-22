@@ -23,7 +23,9 @@ public class CadastroProfessoresWindow extends JInternalFrame{
 	private JComboBox comboFase;
 	private JComboBox comboDisciplina;
 	private JComboBox comboTituloDocente;
-	private JButton btnConcluir;
+	private JButton btnSalvar;
+	private JButton btnConsultar;
+	private JButton btnExcluir;
 	
 	String[] testeFases = {"teste Fase-01","teste Fase-02","teste Fase-03"};
 	String[] testeCursos = {"teste Curso-01","teste Curso-02","teste Curso-03"};
@@ -32,7 +34,7 @@ public class CadastroProfessoresWindow extends JInternalFrame{
 	
 	
 	public CadastroProfessoresWindow() {
-		setSize(700, 230);
+		setSize(700, 210);
 		setTitle("Cadastro de Professores");
 		setLayout(null);
 		
@@ -103,10 +105,36 @@ public class CadastroProfessoresWindow extends JInternalFrame{
 		getContentPane().add(comboTituloDocente);
 //		=====================Button==============================
 		
-		btnConcluir = new JButton("Concluir");
-		btnConcluir.setBounds(200, 135, 250, 30);
-		getContentPane().add(btnConcluir);
-		btnConcluir.addActionListener(new ActionListener() {
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(80, 135, 190, 25);
+		getContentPane().add(btnSalvar);
+		btnSalvar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("teste");
+
+			}
+
+		});
+
+		btnConsultar = new JButton("Consultar");
+		btnConsultar.setBounds(275, 135, 190, 25);
+		getContentPane().add(btnConsultar);
+		btnConsultar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("teste");
+
+			}
+
+		});
+
+		btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(470, 135, 190, 25);
+		getContentPane().add(btnExcluir);
+		btnExcluir.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
