@@ -11,7 +11,6 @@ public class Professores extends ModeloGenerico implements Serializable {
 	private Integer cdProfessor;
 	private String nmProfessor;
 	private String titulo;
-	private Disciplinas disciplina;
 	public Integer getCdProfessor() {
 		return cdProfessor;
 	}
@@ -30,18 +29,11 @@ public class Professores extends ModeloGenerico implements Serializable {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Disciplinas getDisciplina() {
-		return disciplina;
-	}
-	public void setDisciplina(Disciplinas disciplina) {
-		this.disciplina = disciplina;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cdProfessor == null) ? 0 : cdProfessor.hashCode());
-		result = prime * result + ((disciplina == null) ? 0 : disciplina.hashCode());
 		result = prime * result + ((nmProfessor == null) ? 0 : nmProfessor.hashCode());
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
@@ -60,11 +52,6 @@ public class Professores extends ModeloGenerico implements Serializable {
 				return false;
 		} else if (!cdProfessor.equals(other.cdProfessor))
 			return false;
-		if (disciplina == null) {
-			if (other.disciplina != null)
-				return false;
-		} else if (!disciplina.equals(other.disciplina))
-			return false;
 		if (nmProfessor == null) {
 			if (other.nmProfessor != null)
 				return false;
@@ -77,6 +64,7 @@ public class Professores extends ModeloGenerico implements Serializable {
 			return false;
 		return true;
 	}
+	
 	
 	
 

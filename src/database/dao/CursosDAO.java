@@ -68,7 +68,7 @@ public class CursosDAO extends DaoGeneric<Cursos>{
 	public Cursos existe(Cursos modelo) {
 		if(getLista() == null || getLista().isEmpty()) return null;
 		for(Cursos curso : getLista()) {
-			if(modelo.getCdCurso().equals(curso.getCdCurso())) {
+			if(modelo.getNmCurso().equals(curso.getNmCurso())) {
 				return curso;
 			}
 		}

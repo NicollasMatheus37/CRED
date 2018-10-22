@@ -6,11 +6,14 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,11 +26,19 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import TableModel.DisciplinaTableModel;
 import TableModel.OperacaoTableModel;
 import TableModel.ProfessorTableModel;
+import database.dao.CursosDAO;
+import database.dao.DisciplinasDAO;
+import database.dao.FaseDAO;
+import database.dao.ProfessorDAO;
+import database.dao.importation.HeaderDAO;
+import database.model.Cursos;
+import database.model.Disciplinas;
+import database.model.Fases;
+import database.model.Professores;
 import database.model.importation.Arquivo;
 import database.model.importation.ResumoDisciplina;
 import database.model.importation.ResumoOperacao;
 import database.model.importation.ResumoProfessor;
-import hashmap.HashMaps;
 import lib.ImportacaoArquivo;
 
 public class ImportacaoWindow extends JInternalFrame {
@@ -115,6 +126,7 @@ public class ImportacaoWindow extends JInternalFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!txfImportar.getText().equals("")) {
+					limpar();
 					importarArquivo(txfImportar.getText());
 				}
 			}
@@ -257,27 +269,30 @@ public class ImportacaoWindow extends JInternalFrame {
 		painelFundoProf.setBounds(450, 100, 330, 425);
 		getContentPane().add(painelFundoProf);
 
-		btnNum1 = new JButton("Importar");
+		btnNum1 = new JButton("Limpar");
 		btnNum1.setBounds(680, 540, 100, 25);
 		getContentPane().add(btnNum1);
 		btnNum1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vai Dar");
+				limpar();
 
 			}
 
 		});
 
-		btnNum2 = new JButton("Importar");
+		btnNum2 = new JButton("Salvar");
 		btnNum2.setBounds(560, 540, 100, 25);
 		getContentPane().add(btnNum2);
 		btnNum2.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vai Dar");
+				if (salvarImportacao()) {
+					JOptionPane.showMessageDialog(null, "Informações salvas com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+					limpar();
+				}
 
 			}
 
@@ -320,6 +335,95 @@ public class ImportacaoWindow extends JInternalFrame {
 
 		}
 
+	}
+	
+	public boolean salvarImportacao() {
+		
+		CursosDAO cDao = new CursosDAO();
+		FaseDAO fDao = new FaseDAO();
+		ProfessorDAO pDao = new ProfessorDAO();
+		DisciplinasDAO dDao = new DisciplinasDAO();
+				
+		try {
+			Cursos c = new Cursos();
+			
+			c.setCdCurso(cDao.getMax());
+			c.setNmCurso(arquivoImportado.getHeader().get(0).getCurso());
+			
+			if (cDao.salvar(c)) {
+				
+				c = cDao.existe(c);
+				
+				for (ResumoOperacao op : arquivoImportado.getResumos()) {
+					
+					Fases f = new Fases();
+					
+					f.setCdFase(fDao.getMax());
+					f.setCurso(c);
+					f.setNrFase(Integer.parseInt(op.getFase().substring(4, 7)));
+					
+					if (fDao.salvar(f)) {
+						
+						f = fDao.existe(f);
+								
+						for (ResumoDisciplina rD : op.getDisciplinas()) {
+							
+							List<Professores> professores = new ArrayList<Professores>();
+							
+							for (ResumoProfessor rP : rD.getProfessores()) {
+								
+								Professores p = new Professores();
+								
+								p.setCdProfessor(pDao.getMax());
+								p.setNmProfessor(rP.getNomeProfessor());
+								p.setTitulo(rP.getTituloDocente());
+								
+								if (pDao.salvar(p)) {
+									p = pDao.existe(p);
+									
+									professores.add(p);
+								}
+								
+							}
+							
+							Disciplinas d = new Disciplinas();
+							
+							d.setCdDisciplina(dDao.getMax());
+							d.setMatricula(rD.getCodigoDisciplina());
+							d.setDiaSemana(rD.getDiaSemana());
+							d.setFase(f);
+							d.setProfessores(professores);
+							
+							dDao.salvar(d);
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			HeaderDAO hDao = new HeaderDAO();
+			
+			hDao.salvar(arquivoImportado.getHeader().get(0));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+	public void limpar() {
+		txfCurso.setText("");
+		txfData.setText("");
+		txfFaseF.setText("");
+		txfFaseI.setText("");
+		modelD.limpar();
+		modelO.limpar();
+		modelP.limpar();
+		
 	}
 
 }

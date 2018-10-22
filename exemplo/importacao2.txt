@@ -1,0 +1,57 @@
+0CCOMPUNTAC20180919FASE005FASE0090000002001
+1FASE0050505
+21087500201
+3Marcel Campos Inocencio                01
+21087600401
+3Ana Cláudia Garcia Barbosa             03
+21087300301
+3Gilberto Vieira da Silva               03
+21087200601
+3Sergio Coral                           04
+21087400501
+3Gilberto Vieira da Silva               03
+1FASE0060505
+21087700601
+3Gustavo Bisognin                       01
+21087900401
+3Sergio Coral                           04
+21088000201
+3Paulo João Martins                     02
+21087800501
+3Ana Cláudia Garcia Barbosa             01
+21088100301
+3Sergio Coral                           04
+1FASE0070606
+21088600401
+3Elenice Padoin Juliani Engel           03
+21088400201
+3Giácomo Antônio Althoff Bolan          02
+21088300701
+3Paulo João Martins                     04
+21088500501
+3Merisandra Côrtes de Mattos Garcia     03
+21088200301
+3Valter Blauth Junior                   01
+21088700601
+3Ana Cláudia Garcia Barbosa             01
+1FASE0080507
+21089100203
+3Michele Domingos Schneider             03
+3Ricardo Pieri                          02
+3Volmar Madeira                         02
+21089000301
+3Leila Laís Gonçalves                   02
+21089200401
+3Matheus Leandro Ferreira               04
+21088800501
+3Fabricio Giordani                      03
+21088900601 
+3Merisandra Côrtes de Mattos Garcia     03
+1FASE0090303
+21089500401
+3Fabricio Giordani                      03
+21089300201
+3Leila Laís Gonçalves                   02
+21089400501
+3Merisandra Côrtes de Mattos Garcia     03
+900000000055    

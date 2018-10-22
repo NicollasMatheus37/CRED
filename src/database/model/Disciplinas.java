@@ -1,6 +1,8 @@
 package database.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import generic.ModeloGenerico;
 
@@ -9,33 +11,34 @@ public class Disciplinas extends ModeloGenerico implements Serializable {
 	private static final long serialVersionUID = -2191621589985673858L;
 	
 	private Integer cdDisciplina;
-	private String cdMatricula;
+	private String matricula;
+	private List<Professores> professores = new ArrayList<Professores>();
 	private String diaSemana;
-	private Integer qtProfessor;
 	private Fases fase;
+	
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 	public Integer getCdDisciplina() {
 		return cdDisciplina;
 	}
 	public void setCdDisciplina(Integer cdDisciplina) {
 		this.cdDisciplina = cdDisciplina;
 	}
-	public String getCdMatricula() {
-		return cdMatricula;
+	public List<Professores> getProfessores() {
+		return professores;
 	}
-	public void setCdMatricula(String cdMatricula) {
-		this.cdMatricula = cdMatricula;
+	public void setProfessores(List<Professores> professores) {
+		this.professores = professores;
 	}
 	public String getDiaSemana() {
 		return diaSemana;
 	}
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
-	}
-	public Integer getQtProfessor() {
-		return qtProfessor;
-	}
-	public void setQtProfessor(Integer qtProfessor) {
-		this.qtProfessor = qtProfessor;
 	}
 	public Fases getFase() {
 		return fase;
@@ -48,10 +51,10 @@ public class Disciplinas extends ModeloGenerico implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cdDisciplina == null) ? 0 : cdDisciplina.hashCode());
-		result = prime * result + ((cdMatricula == null) ? 0 : cdMatricula.hashCode());
 		result = prime * result + ((diaSemana == null) ? 0 : diaSemana.hashCode());
 		result = prime * result + ((fase == null) ? 0 : fase.hashCode());
-		result = prime * result + ((qtProfessor == null) ? 0 : qtProfessor.hashCode());
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		result = prime * result + ((professores == null) ? 0 : professores.hashCode());
 		return result;
 	}
 	@Override
@@ -68,11 +71,6 @@ public class Disciplinas extends ModeloGenerico implements Serializable {
 				return false;
 		} else if (!cdDisciplina.equals(other.cdDisciplina))
 			return false;
-		if (cdMatricula == null) {
-			if (other.cdMatricula != null)
-				return false;
-		} else if (!cdMatricula.equals(other.cdMatricula))
-			return false;
 		if (diaSemana == null) {
 			if (other.diaSemana != null)
 				return false;
@@ -83,14 +81,18 @@ public class Disciplinas extends ModeloGenerico implements Serializable {
 				return false;
 		} else if (!fase.equals(other.fase))
 			return false;
-		if (qtProfessor == null) {
-			if (other.qtProfessor != null)
+		if (matricula == null) {
+			if (other.matricula != null)
 				return false;
-		} else if (!qtProfessor.equals(other.qtProfessor))
+		} else if (!matricula.equals(other.matricula))
+			return false;
+		if (professores == null) {
+			if (other.professores != null)
+				return false;
+		} else if (!professores.equals(other.professores))
 			return false;
 		return true;
 	}
-	
-	
 
+	
 }

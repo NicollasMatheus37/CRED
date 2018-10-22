@@ -1,7 +1,15 @@
 package database.model.importation;
 
-public class Header {
+import java.io.Serializable;
+
+public class Header implements Serializable {
 	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -668156680024216895L;
 	private int tipoRegistro;
 	private String curso;
 	private String dataProcessamento;

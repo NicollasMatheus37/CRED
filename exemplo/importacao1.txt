@@ -1,0 +1,53 @@
+0CCOMPUNTAC20180919FASE001FASE0040000001001
+1FASE0010508
+20108500202
+3Gustavo Bisognin                        01
+3Luciano Antunes                         01
+20108540301
+3Adriane Brogni Uggioni                  02
+20108510401
+3Luciano Antunes                         01
+20108520503
+3Cibele Beirith Figueiredo Freitas       02
+3Guiomar da Rosa Bortot                  01
+3Rosemari de Oliveira Duarte             01
+20108530601
+3Cibele Beirith Figueiredo Freitas       02
+1FASE0020505
+20108580201
+3Louise Miron Roloff                     03
+20108570301
+3Alex Sander da Silva                    02
+20108560401
+3Ênio José Peruchi                       02
+20108550501
+3Ana Cláudia Garcia Barbosa              01
+20108590601
+3Luciano Antunes                         01
+1FASE0030606
+20108600201
+3Louise Miron Roloff                     03
+20108620301
+3Ênio José Peruchi                       02
+20108630401
+3Kristian Madeira                        01
+20108640501
+3Sergio Coral                            04
+20108610601
+3Gilberto Vieira da Silva                03
+20108650701
+3Leila Laís Gonçalves                    02
+1FASE0040606
+20108680201
+3Paulo João Martins                      04
+20108690301
+3Sergio Coral                            04
+20108700401
+3Evanio Ramos Nicoleit                   01
+20108660501
+3Matheus Leandro Ferreira                04
+20108670701
+3Leila Laís Gonçalves                    02
+20108710601
+3Matheus Leandro Ferreira                04
+900000000051
