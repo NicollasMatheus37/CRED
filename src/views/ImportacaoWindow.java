@@ -30,7 +30,6 @@ import database.model.importation.ResumoProfessor;
 import hashmap.HashMaps;
 import lib.ImportacaoArquivo;
 
-//odeio essa merda de merge conflict
 public class ImportacaoWindow extends JInternalFrame {
 
 	private JLabel lblImportar;
@@ -291,7 +290,7 @@ public class ImportacaoWindow extends JInternalFrame {
 		arquivoImportado = new ImportacaoArquivo().lerArquivo("", caminho);
 
 		if (arquivoImportado == null)
-			return; 
+			return;
 
 		modelO.limpar();
 		modelD.limpar();

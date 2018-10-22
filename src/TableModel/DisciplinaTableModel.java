@@ -10,13 +10,13 @@ import javax.swing.table.AbstractTableModel;
 import database.model.importation.ResumoDisciplina;
 import database.model.importation.ResumoOperacao;
 import hashmap.HashMaps;
-//odeio essa merda de merge conflict
+
 public class DisciplinaTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -3586211638575736174L;
 
 	private List<ResumoDisciplina> disciplinas;
 	private String[] colunas = new String[] { "Disciplina", "Dia da Semana", "N° de Professores",};
- 
+
 	public DisciplinaTableModel(List<ResumoDisciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}

@@ -1,8 +1,7 @@
 package database.model.importation;
 
 public class ResumoProfessor {
-
-	//odeio essa merda de merge conflict
+	
 	private int tipoRegistro;
 	private String nomeProfessor;
 	private String tituloDocente;

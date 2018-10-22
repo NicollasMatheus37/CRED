@@ -2,7 +2,6 @@ package database.model.importation;
 
 import java.util.List;
 
-//odeio essa merda de merge conflict
 public class Arquivo {
 	private List<Header> header;
 	private List<ResumoOperacao> resumos;

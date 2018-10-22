@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HashMaps {
-	 
+	
 	private Map<String, String> mapDisciplinas;
 	private Map<String, String> mapDiasSemana;
 	private Map<String, String> mapQualificao;

@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResumoDisciplina {
-
-	//odeio essa merda de merge conflict
+	
 	private int tipoRegistro;
 	private String codigoDisciplina;
 	private String diaSemana;
