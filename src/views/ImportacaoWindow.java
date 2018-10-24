@@ -71,6 +71,7 @@ public class ImportacaoWindow extends JInternalFrame {
 	private JButton btnNum2;
 	private Arquivo arquivoImportado;
 	private boolean clickOperacao = false;
+	private boolean limpar = false;
 
 	// private JButton btnImportarr;
 
@@ -191,7 +192,7 @@ public class ImportacaoWindow extends JInternalFrame {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				
+				if (limpar) return;
 				if (tblOperacao.getSelectedRow() < 0) return;
 				
 				clickOperacao = true;
@@ -244,6 +245,8 @@ public class ImportacaoWindow extends JInternalFrame {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 
+				if (limpar) return;
+				
 				if (!clickOperacao) {
 					tblOperacao.clearSelection();
 					tblProfessor.clearSelection();
@@ -416,6 +419,7 @@ public class ImportacaoWindow extends JInternalFrame {
 	}
 	
 	public void limpar() {
+		limpar = true;
 		txfCurso.setText("");
 		txfData.setText("");
 		txfFaseF.setText("");
@@ -423,6 +427,7 @@ public class ImportacaoWindow extends JInternalFrame {
 		modelD.limpar();
 		modelO.limpar();
 		modelP.limpar();
+		limpar = false;
 		
 	}
 

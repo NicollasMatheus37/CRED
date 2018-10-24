@@ -81,7 +81,7 @@ public class HeaderDAO extends DaoGeneric<Header> {
 				return header;
 			}
 		}
-		return modelo;
+		return null;
 	}
 
 	@Override
